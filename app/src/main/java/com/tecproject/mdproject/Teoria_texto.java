@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 public class Teoria_texto extends AppCompatActivity {
 
+    int mivar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
