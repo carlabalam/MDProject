@@ -23,7 +23,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Menu_temas" />
         <activity android:name=".Ejercicio" />
         <activity android:name=".Examen" />
         <activity android:name=".Login" />

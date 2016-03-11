@@ -17,11 +17,34 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Button b1, b2, b3, b4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        b1=(Button) findViewById(R.id.bttema1);
+        b2=(Button) findViewById(R.id.button2);
+        b3=(Button) findViewById(R.id.button3);
+        b4=(Button) findViewById(R.id.button4);
+
+        b1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent= new Intent(MainActivity.this, Subtemas.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -76,10 +99,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_estudiar) {
-            Intent intent= new Intent(this, Bar.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_examen) {
+        if (id == R.id.nav_examen) {
             Intent intent= new Intent(this, Examen.class);
             startActivity(intent);
 
