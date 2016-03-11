@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="match_parent">
+
+
+    <FrameLayout
+        android:layout_width="175dp"
+        android:layout_height="160dp"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:id="@+id/frame1">
+
+
+        <Button
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/buttonSizeHeigh"
+            android:text="@string/b1"
+            android:id="@+id/bDecimal"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="10dp"
+
+            android:background="#ffffff"
+            android:enabled="true" />
+
+        <Button
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/underHeigh"
+            android:id="@+id/button6"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="#3ec48e"
+            android:textColor="#ffffff" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="175dp"
+        android:layout_height="160dp"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:id="@+id/frame2">
+
+        <Button
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/buttonSizeHeigh"
+            android:text="@string/b2"
+            android:id="@+id/bBinario"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="10dp"
+            android:background="#d9d9d9"
+            android:focusable="false"
+            android:enabled="false" />
+
+        <Button
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/underHeigh"
+            android:text="@string/b3"
+            android:id="@+id/button2"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="#a5a5a5"
+            android:textColor="#ffffff"
+            android:enabled="false" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="175dp"
+        android:layout_height="160dp"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:id="@+id/frame3">
+
+        <Button
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/buttonSizeHeigh"
+            android:text="@string/b4"
+            android:id="@+id/bHexa"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorBotonSup"
+            android:enabled="false" />
+
+        <Button
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/underHeigh"
+            android:text="@string/b5"
+            android:id="@+id/button5"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@color/colorBotonInf"
+            android:textColor="#ffffff"
+            android:enabled="false" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="175dp"
+        android:layout_height="160dp"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:id="@+id/frame4">
+
+        <Button
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/buttonSizeHeigh"
+            android:text="@string/b7"
+            android:id="@+id/bOtro"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorBotonSup"
+            android:enabled="false" />
+
+        <Button
+            android:layout_width="@dimen/buttonSize"
+            android:layout_height="@dimen/underHeigh"
+            android:text="New Button"
+            android:id="@+id/button8"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@color/colorBotonInf"
+            android:textColor="#ffffff"
+            android:enabled="false" />
+    </FrameLayout>
+
+</GridLayout>

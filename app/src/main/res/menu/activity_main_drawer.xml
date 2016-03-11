@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_estudiar"
+            android:icon="@drawable/estudiar"
+            android:title="Estudiar" />
+        <item
+            android:id="@+id/nav_examen"
+            android:icon="@drawable/examen"
+            android:title="Examen" />
+        <item
+            android:id="@+id/nav_ejercicios"
+            android:icon="@drawable/execicios"
+            android:title="Ejercicios" />
+        <item
+            android:id="@+id/nav_estadisticas"
+            android:icon="@drawable/estadistica"
+            android:title="Estadisticas" />
+    </group>
+
+
+</menu>

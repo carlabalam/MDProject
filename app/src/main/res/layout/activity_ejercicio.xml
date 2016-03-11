@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    android:contextClickable="false"
+    android:nestedScrollingEnabled="false"
+    android:visibility="visible"
+    android:touchscreenBlocksFocus="false"
+    android:transitionGroup="false">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="@dimen/cuadro_imagen"
+            android:layout_height="@dimen/text_size_estandar_small"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Instrucciones"
+            android:id="@+id/Instrucciones"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.33"
+            android:textAlignment="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="@dimen/cuadro_imagen"
+            android:layout_height="@dimen/cuadro_imagen"
+            android:id="@+id/imageView"
+            android:background="#dad6d6"
+            android:layout_above="@+id/editText"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignLeft="@+id/Instrucciones"
+            android:layout_alignStart="@+id/Instrucciones" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:gravity="center"
+            android:singleLine="false"
+            android:selectAllOnFocus="false"
+            android:textIsSelectable="false"
+            android:layout_gravity="center_horizontal"
+            android:layout_above="@+id/button"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aceptar"
+            android:textColor="#ffffff"
+            android:id="@+id/button"
+            android:gravity="center"
+            android:clickable="true"
+            android:background="@drawable/bottom"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="42dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
+
+
+</RelativeLayout>
