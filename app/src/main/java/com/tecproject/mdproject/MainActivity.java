@@ -1,7 +1,8 @@
 package com.tecproject.mdproject;
 
 import android.content.Intent;
-import android.database.SQLException;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,14 +14,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.tecproject.mdproject.bd.BaseDeDatos;
-
-import java.io.IOException;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Button b1, b2, b3, b4;
+
+    TextView tv;
+    String texto = "";
+    SQLiteDatabase db= null;
+    Cursor cursor = null;
+
 
 
     @Override
@@ -28,7 +32,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BaseDeDatos myDbHelper = new BaseDeDatos(this);
+        tv = (TextView)findViewById(R.id.textView);
+
+        db = this.openOrCreateDatabase("BaseDatos.sqlite", MODE_PRIVATE, null);
+
+        ejecutaSQL();
+        muestraTabla();
+        db.close();
+        tv.append(texto);
+
+        /*BaseDeDatos myDbHelper = new BaseDeDatos(this);
 
         try {
 
@@ -48,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             throw sqle;
 
-        }
+        }*/
 
 
         b1=(Button) findViewById(R.id.bttema1);
@@ -84,6 +97,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+    }
+
+    private void ejecutaSQL() {
+        cursor = db.rawQuery("select * from BancoTextos", null);
+    }
+
+    private void muestraTabla() {
+
+
+        int numeroDeFilas = cursor.getCount();
+
+        cursor.moveToFirst();
+        for (int i = 1; i <= numeroDeFilas; i++){
+            int id = cursor.getInt(0);
+            String titulo = cursor.getString(0);
+            texto = texto + "\n " + id + ". " + titulo;
+            cursor.moveToNext();
+        }
     }
 
     @Override
