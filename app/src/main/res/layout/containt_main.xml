@@ -15,7 +15,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="Sistemas Numericos"
         android:id="@+id/bttema1"
         android:padding="@dimen/tamaño_boton_cir"
         android:background="@drawable/btn_circle"
@@ -60,6 +60,19 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anterior"
+        android:id="@+id/bAnterior"
+         />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Siguiente"
+        android:id="@+id/bSiguiente"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/button3"
+        android:layout_alignEnd="@+id/button3" />
 </RelativeLayout>
 

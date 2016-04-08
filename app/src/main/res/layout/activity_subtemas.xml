@@ -14,7 +14,7 @@
         <Button
             android:layout_width="@dimen/buttonSize"
             android:layout_height="@dimen/buttonSizeHeigh"
-            android:text="@string/b1"
+            android:text="Sistemas Numericos"
             android:id="@+id/bDecimal"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="10dp"
@@ -28,7 +28,8 @@
             android:id="@+id/button6"
             android:layout_gravity="center_horizontal|bottom"
             android:background="#3ec48e"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:text="Teoria" />
     </FrameLayout>
 
     <FrameLayout
