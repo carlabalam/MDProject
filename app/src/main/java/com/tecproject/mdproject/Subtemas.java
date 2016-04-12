@@ -24,7 +24,7 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.button6: //boton para llamar otra actividad
                 Intent intent= new Intent(this,Teoria_texto.class);
-                int  id_subtema = 2;
+                int  id_subtema = 1;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
                 break;
