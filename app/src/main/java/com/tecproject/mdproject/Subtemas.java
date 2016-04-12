@@ -7,31 +7,49 @@ import android.view.View;
 import android.widget.Button;
 
 public class Subtemas extends AppCompatActivity implements View.OnClickListener {
-    Button botonS;
+    Button btnSistDecimal, btnHexaDecimal, btnBinario;
+    int  id_subtema;
+
+    Intent intent;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subtemas);
-        botonS = (Button)findViewById(R.id.button6);
+        btnSistDecimal = (Button)findViewById(R.id.bSistNums);
+        btnHexaDecimal = (Button)findViewById(R.id.bHexaDecimal);
+        btnBinario = (Button)findViewById(R.id.bBinario);
 
-        botonS.setOnClickListener(this);
+        btnSistDecimal.setOnClickListener(this);
+        btnHexaDecimal.setOnClickListener(this);
+        btnBinario.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.button6: //boton para llamar otra actividad
-                Intent intent= new Intent(this,Teoria_texto.class);
-                int  id_subtema = 1;
+
+            case R.id.bSistNums: //boton para llamar otra actividad
+                intent = new Intent(this,Teoria_texto.class);
+                id_subtema = 1;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
                 break;
-            case R.id.bSiguiente: //boton para llamar otra actividad
-                Intent intent2= new Intent(this,Teoria_texto.class);
-                startActivity(intent2);
+
+            case R.id.bHexaDecimal: //boton para llamar otra actividad
+                intent= new Intent(this,Teoria_texto.class);
+                id_subtema = 2;
+                intent.putExtra("id_subtema", id_subtema);
+                startActivity(intent);
                 break;
+            case R.id.bBinario: //boton para llamar otra actividad
+                intent = new Intent(this,Teoria_texto.class);
+                id_subtema = 3;
+                intent.putExtra("id_subtema", id_subtema);
+                startActivity(intent);
+                break;
+
             default:
                 break;
         }

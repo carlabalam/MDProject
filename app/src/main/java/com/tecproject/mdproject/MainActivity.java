@@ -21,13 +21,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        b1 =(Button)findViewById(R.id.bttema1);
-
-
-        //b1=(Button) findViewById(R.id.bttema1);
-        b2=(Button) findViewById(R.id.button2);
-        b3=(Button) findViewById(R.id.button3);
-        b4=(Button) findViewById(R.id.button4);
+        b1 =(Button)findViewById(R.id.bSistNumericos);
+        b2=(Button) findViewById(R.id.bConjuntos);
+        b3=(Button) findViewById(R.id.bLogica);
+        b4=(Button) findViewById(R.id.bExamen);
 
         b1.setOnClickListener(new View.OnClickListener(){
 

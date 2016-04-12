@@ -46,7 +46,7 @@
                 android:layout_width="260dp"
                 android:layout_height="38dp"
                 android:text="Op1"
-                android:id="@+id/button2"
+                android:id="@+id/bConjuntos"
                 android:background="#3ec48e"
                 android:textColor="#ffffff"
                 android:layout_marginTop="10sp"
@@ -56,7 +56,7 @@
                 android:layout_width="260dp"
                 android:layout_height="38dp"
                 android:text="Op2"
-                android:id="@+id/button3"
+                android:id="@+id/bLogica"
                 android:background="#3ec48e"
                 android:textColor="#ffffff"
                 android:layout_marginTop="15sp"/>
