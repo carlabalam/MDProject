@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sistemas Numericos"
-        android:id="@+id/bttema1"
+        android:id="@+id/bSistNumericos"
         android:padding="@dimen/tamaño_boton_cir"
         android:background="@drawable/btn_circle"
         android:layout_alignParentTop="true"
@@ -29,11 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Conjuntos"
-        android:id="@+id/button2"
+        android:id="@+id/bConjuntos"
         android:background="@drawable/btn_circle"
         android:height="100dp"
         android:width="100dp"
-        android:layout_above="@+id/button4"
+        android:layout_above="@+id/bExamen"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -42,9 +42,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logica Propos."
-        android:id="@+id/button3"
+        android:id="@+id/bLogica"
         android:background="@drawable/btn_circle"
-        android:layout_alignTop="@+id/button2"
+        android:layout_alignTop="@+id/bConjuntos"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:width="100dp"
@@ -55,24 +55,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Examen"
-        android:id="@+id/button4"
+        android:id="@+id/bExamen"
         android:background="@drawable/btn_circle"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Anterior"
-        android:id="@+id/bAnterior"
-         />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Siguiente"
-        android:id="@+id/bSiguiente"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/button3"
-        android:layout_alignEnd="@+id/button3" />
 </RelativeLayout>
 
