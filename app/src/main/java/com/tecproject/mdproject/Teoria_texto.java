@@ -13,7 +13,7 @@ public class Teoria_texto extends AppCompatActivity {
     int id_secuencia = 0;
     int id_subtema;
     private TextView tv;
-    private Button next;
+    private Button next, atras;
     private String texto = "";
     SQLiteDatabase db = null;
     Cursor cursor = null;
@@ -37,6 +37,7 @@ public class Teoria_texto extends AppCompatActivity {
 
         tv = (TextView) findViewById(R.id.textView);
         next = (Button) findViewById(R.id.btnNext);
+        atras= (Button) findViewById(R.id.bAtras);
 
         ejecutaSQL();
         muestraTabla();
@@ -51,6 +52,20 @@ public class Teoria_texto extends AppCompatActivity {
                 ejecutaSQL();
                 muestraTabla();
                 tv.setText(texto);
+            }
+        });
+
+        atras.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                id_secuencia--;
+                texto = "";
+                ejecutaSQL();
+                muestraTabla();
+                tv.setText(texto);
+
             }
         });
     }
