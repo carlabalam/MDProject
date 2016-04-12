@@ -19,7 +19,7 @@
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="10dp"
 
-            android:background="#ffffff"
+            android:background="@color/colorBotonSup"
             android:enabled="true" />
 
         <Button
@@ -27,7 +27,7 @@
             android:layout_height="@dimen/underHeigh"
             android:id="@+id/button6"
             android:layout_gravity="center_horizontal|bottom"
-            android:background="#3ec48e"
+            android:background="@color/colorBotonInf"
             android:textColor="#ffffff"
             android:text="Teoria" />
     </FrameLayout>
@@ -46,7 +46,7 @@
             android:id="@+id/bBinario"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="10dp"
-            android:background="#d9d9d9"
+            android:background="@color/colorBotonSup"
             android:focusable="false"
             android:enabled="false" />
 
@@ -56,7 +56,7 @@
             android:text="@string/b3"
             android:id="@+id/button2"
             android:layout_gravity="center_horizontal|bottom"
-            android:background="#a5a5a5"
+            android:background="@color/colorBotonInf"
             android:textColor="#ffffff"
             android:enabled="false" />
     </FrameLayout>
