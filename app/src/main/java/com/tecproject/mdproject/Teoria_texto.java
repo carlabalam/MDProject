@@ -10,54 +10,56 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Teoria_texto extends AppCompatActivity {
-    int id=0;
+    int id_secuencia = 0;
     int id_subtema;
     private TextView tv;
     private Button next;
     private String texto = "";
-    SQLiteDatabase db= null;
+    SQLiteDatabase db = null;
     Cursor cursor = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teoria_texto);
 
-        tv = (TextView)findViewById(R.id.textView);
-        next = (Button)findViewById(R.id.btnNext);
-
-        db = this.openOrCreateDatabase("BaseDatos.sqlite", MODE_PRIVATE, null);
 
         //pertence al ejercicio de enviar datos entre actividades
         Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
         Bundle bundle = intentar.getExtras();
 
-        if (bundle !=null){
+        if (bundle != null) {
             int id_subtema_recogido = bundle.getInt("id_subtema");
-            get_id_subtema(id_subtema_recogido);
+            set_id_subtema(id_subtema_recogido);
         }
 
+        db = openOrCreateDatabase("BaseDatos.sqlite", MODE_PRIVATE, null);
 
-        View.OnClickListener listener = new View.OnClickListener(){
+        tv = (TextView) findViewById(R.id.textView);
+        next = (Button) findViewById(R.id.btnNext);
+
+        ejecutaSQL();
+        muestraTabla();
+        tv.setText(texto);
+
+        next.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
+                id_secuencia++;
+                texto = "";
+                ejecutaSQL();
+                muestraTabla();
+                tv.setText(texto);
             }
-        };
-
-        next.setOnClickListener(listener);
-        ejecutaSQL(id);
-        muestraTabla();
-        db.close();
-        tv.setText(texto);
-
+        });
     }
 
-    private void ejecutaSQL(int id) {
-        cursor = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == "+ id_subtema + "  AND Secuencia =="+ id, null);
+
+    private void ejecutaSQL() {
+        cursor = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == " + id_subtema + "  AND Secuencia ==" + id_secuencia, null);
     }
+
     private void muestraTabla() {
         cursor.moveToFirst();
         String titulo = cursor.getString(3);
@@ -65,9 +67,7 @@ public class Teoria_texto extends AppCompatActivity {
         cursor.moveToNext();
     }
 
-
-    private void get_id_subtema(int id_subtema) {
+    private void set_id_subtema(int id_subtema) {
         this.id_subtema = id_subtema;
     }
-
 }
