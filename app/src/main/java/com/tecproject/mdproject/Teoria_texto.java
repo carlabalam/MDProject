@@ -42,12 +42,20 @@ public class Teoria_texto extends AppCompatActivity {
         ejecutaSQL();
         muestraTabla();
         tv.setText(texto);
+        atras.setEnabled(false);
 
         next.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
                 id_secuencia++;
+
+                if (id_secuencia > 0){
+                    atras.setEnabled(true);
+                }
+
+
                 texto = "";
                 ejecutaSQL();
                 muestraTabla();
@@ -60,11 +68,21 @@ public class Teoria_texto extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                id_secuencia--;
-                texto = "";
-                ejecutaSQL();
-                muestraTabla();
-                tv.setText(texto);
+                    id_secuencia--;
+
+                    if(id_secuencia==0){
+                        atras.setEnabled(false);
+                    }
+
+
+                    texto = "";
+                    ejecutaSQL();
+                    muestraTabla();
+                    tv.setText(texto);
+
+
+
+
 
             }
         });
