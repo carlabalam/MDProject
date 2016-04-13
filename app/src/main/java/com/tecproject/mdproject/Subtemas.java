@@ -10,12 +10,24 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
     Button btnSistDecimal, btnHexaDecimal, btnBinario;
     int  id_subtema;
 
+    boolean recibido;
+
     Intent intent;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //pertence al ejercicio de enviar datos entre actividades
+        Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
+        Bundle bundle = intentar.getExtras();
+
+        if (bundle != null) {
+            recibido = bundle.getBoolean("loquesea");
+        }
+
+
         setContentView(R.layout.activity_subtemas);
         btnSistDecimal = (Button)findViewById(R.id.bSistNums);
         btnHexaDecimal = (Button)findViewById(R.id.bHexaDecimal);
@@ -24,7 +36,14 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
         btnSistDecimal.setOnClickListener(this);
         btnHexaDecimal.setOnClickListener(this);
         btnBinario.setOnClickListener(this);
+
+        if (recibido){
+            btnHexaDecimal.setEnabled(true);
+
+        }
     }
+
+
 
     @Override
     public void onClick(View v) {
