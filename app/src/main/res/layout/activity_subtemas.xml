@@ -76,7 +76,7 @@
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="10dp"
             android:background="@color/colorBotonSup"
-            android:enabled="true" />
+            android:enabled="false" />
 
         <Button
             android:layout_width="@dimen/buttonSize"
