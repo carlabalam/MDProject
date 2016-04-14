@@ -105,7 +105,7 @@ public class Teoria_texto extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent22  = new Intent(Teoria_texto.this, Subtemas.class);
                 boolean loquesea = true;
-                intent22.putExtra("loquesea", loquesea);
+                intent22.putExtra("id_subtema", id_subtema);
                 startActivity(intent22);
                 startActivity(intent22);
             }

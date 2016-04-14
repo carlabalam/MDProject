@@ -9,8 +9,9 @@ import android.widget.Button;
 public class Subtemas extends AppCompatActivity implements View.OnClickListener {
     Button btnSistDecimal, btnHexaDecimal, btnBinario;
     int  id_subtema;
+    int cont;
 
-    boolean recibido;
+    Integer recibido;
 
     Intent intent;
 
@@ -23,11 +24,6 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
         Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
         Bundle bundle = intentar.getExtras();
 
-        if (bundle != null) {
-            recibido = bundle.getBoolean("loquesea");
-        }
-
-
         setContentView(R.layout.activity_subtemas);
         btnSistDecimal = (Button)findViewById(R.id.bSistNums);
         btnHexaDecimal = (Button)findViewById(R.id.bHexaDecimal);
@@ -37,9 +33,16 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
         btnHexaDecimal.setOnClickListener(this);
         btnBinario.setOnClickListener(this);
 
-        if (recibido){
-            btnHexaDecimal.setEnabled(true);
-
+        if (bundle != null) {
+            //recibido = bundle.getBoolean("loquesea");
+            recibido = bundle.getInt("id_subtema");
+            switch (recibido){
+                case 1: btnHexaDecimal.setEnabled(true);
+                    break;
+                case 2: btnBinario.setEnabled(true);
+                    btnHexaDecimal.setEnabled(true);
+                    break;
+            }
         }
     }
 
@@ -68,7 +71,6 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
                 break;
-
             default:
                 break;
         }
