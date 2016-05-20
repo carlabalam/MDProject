@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.tecproject.mdproject.bd.Helper;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Button b1, b2, b3, b4;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         b2=(Button) findViewById(R.id.bConjuntos);
         b3=(Button) findViewById(R.id.bLogica);
         b4=(Button) findViewById(R.id.bExamen);
+
+        Helper mydb = new Helper(getApplicationContext());
 
         b1.setOnClickListener(new View.OnClickListener(){
 
@@ -74,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
     }
 
     @Override
@@ -102,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

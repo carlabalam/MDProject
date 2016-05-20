@@ -1,8 +1,10 @@
 package com.tecproject.mdproject;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -32,6 +34,9 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
         btnSistDecimal.setOnClickListener(this);
         btnHexaDecimal.setOnClickListener(this);
         btnBinario.setOnClickListener(this);
+        //Creación del botón de atrás (icono)
+        //android.support.v7.app.ActionBar actionBar= getSupportActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
 
         if (bundle != null) {
             //recibido = bundle.getBoolean("loquesea");
@@ -46,8 +51,6 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -59,8 +62,7 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
                 startActivity(intent);
                 break;
 
-            case R.id.bHexaDecimal: //boton para llamar otra actividad
-                intent= new Intent(this,Teoria_texto.class);
+            case R.id.bHexaDecimal: //boton para llamar otra activida
                 id_subtema = 2;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
@@ -76,5 +78,21 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
         }
 
     }
+//Método que controla la acción despues de pulsar el botón de atrás del celular
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            event.setSource(0); //Deshabilita el botón
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+    //Botón atrás
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivityForResult(myIntent, 0);
+        return true;
+
+    }
+
 
 }
