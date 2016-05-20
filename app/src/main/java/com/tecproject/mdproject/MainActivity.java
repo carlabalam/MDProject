@@ -37,6 +37,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        b2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent= new Intent(MainActivity.this, Subtemas_Conjuntos.class);
+                startActivity(intent);
+
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent= new Intent(MainActivity.this, Subtemas_Logica.class);
+                startActivity(intent);
+
+            }
+        });
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
