@@ -30,16 +30,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Helper mydb = new Helper(getApplicationContext());
 
-        b1.setOnClickListener(new View.OnClickListener(){
+       /* b1.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
 
                 Intent intent= new Intent(MainActivity.this, Subtemas.class);
                 startActivity(intent);
-
             }
-        });
+        });*/
+        b1.setOnClickListener((View.OnClickListener) this);
+        b2.setOnClickListener((View.OnClickListener) this);
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //noinspection deprecation
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -114,5 +118,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.bSistNumericos: Intent intent= new Intent(MainActivity.this, Subtemas.class);
+                startActivity(intent);
+                break;
+        }
+    }
 }
