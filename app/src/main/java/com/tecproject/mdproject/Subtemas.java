@@ -79,9 +79,11 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener 
 
     }
 //Método que controla la acción despues de pulsar el botón de atrás del celular
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+   public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            event.setSource(0); //Deshabilita el botón
+            //event.setSource(0); //Deshabilita el botón
+            Intent intent2= new Intent(this, MainActivity.class);
+            startActivity(intent2);
             return true;
         }
         return super.onKeyDown(keyCode, event);

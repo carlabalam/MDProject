@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Subtemas_Logica extends AppCompatActivity implements View.OnClickListener {
-    Button btnSistDecimal, btnHexaDecimal, btnBinario;
+    Button btn1, btn2, btn3;
     int  id_subtema;
     int cont;
 
@@ -25,22 +25,26 @@ public class Subtemas_Logica extends AppCompatActivity implements View.OnClickLi
         Bundle bundle = intentar.getExtras();
 
         setContentView(R.layout.activity_subtemas);
-        btnSistDecimal = (Button)findViewById(R.id.bSistNums);
-        btnHexaDecimal = (Button)findViewById(R.id.bHexaDecimal);
-        btnBinario = (Button)findViewById(R.id.bBinario);
+        btn1 = (Button)findViewById(R.id.bSistNums);
+        btn2 = (Button)findViewById(R.id.bHexaDecimal);
+        btn3 = (Button)findViewById(R.id.bBinario);
 
-        btnSistDecimal.setOnClickListener(this);
-        btnHexaDecimal.setOnClickListener(this);
-        btnBinario.setOnClickListener(this);
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+
+        btn1.setText("SUB 1");
+        btn2.setText("SUB 2");
+        btn3.setText("SUB 3");
 
         if (bundle != null) {
             //recibido = bundle.getBoolean("loquesea");
             recibido = bundle.getInt("id_subtema");
             switch (recibido){
-                case 1: btnHexaDecimal.setEnabled(true);
+                case 1: btn1.setEnabled(true);
                     break;
-                case 2: btnBinario.setEnabled(true);
-                    btnHexaDecimal.setEnabled(true);
+                case 2: btn2.setEnabled(true);
+                    btn3.setEnabled(true);
                     break;
             }
         }
