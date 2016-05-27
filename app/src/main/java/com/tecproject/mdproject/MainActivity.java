@@ -8,10 +8,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.tecproject.mdproject.bd.Helper;
 
@@ -112,6 +114,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    //Método que controla la acción despues de pulsar el botón de atrás del celular
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            //event.setSource(0); //Deshabilita el botón
+            Toast.makeText(this,"Saliendo de la aplicacion", Toast.LENGTH_SHORT).show();
+           finish();
+            return true;
+
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 
