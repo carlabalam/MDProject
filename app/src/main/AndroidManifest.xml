@@ -29,7 +29,7 @@
         <activity android:name=".Subtemas" />
         <activity android:name=".Teoria_texto" />
         <activity android:name=".Teoria_imagen" />
-        <activity android:name=".Bar"></activity>
+
     </application>
 
 </manifest>

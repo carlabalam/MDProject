@@ -32,16 +32,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Helper mydb = new Helper(getApplicationContext());
 
-        b1.setOnClickListener(new View.OnClickListener(){
+       b1.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
 
                 Intent intent= new Intent(MainActivity.this, Subtemas.class);
                 startActivity(intent);
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+                /*Intent intent= new Intent(MainActivity.this, Subtemas_Conjuntos.class);
+                startActivity(intent);*/
 
             }
         });
+
+        b3.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+                /*Intent intent= new Intent(MainActivity.this, Subtemas_Logica.class);
+                startActivity(intent);*/
+
+            }
+        });
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //noinspection deprecation
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -116,7 +139,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-
     //Método que controla la acción despues de pulsar el botón de atrás del celular
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
@@ -124,10 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this,"Saliendo de la aplicacion", Toast.LENGTH_SHORT).show();
            finish();
             return true;
-
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
 }
