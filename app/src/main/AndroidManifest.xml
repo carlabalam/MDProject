@@ -25,11 +25,17 @@
         </activity>
         <activity android:name=".Ejercicio" />
         <activity android:name=".Examen" />
-        <activity android:name=".Login" />
-        <activity android:name=".Subtemas" />
+        <activity
+            android:name=".Subtemas"
+            android:label="Subtemas"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Teoria_texto" />
         <activity android:name=".Teoria_imagen" />
-        <activity android:name=".Bar"></activity>
+        <activity
+            android:name=".Home"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Subtemas_conjuntos"></activity>
     </application>
 
 </manifest>

@@ -2,10 +2,13 @@ package com.tecproject.mdproject.bd;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class Helper extends SQLiteAssetHelper {
+
+
     SQLiteDatabase db = null;
 
     private static final String DB_NAME = "BaseDatos.sqlite";
@@ -17,3 +20,5 @@ public class Helper extends SQLiteAssetHelper {
         db = getWritableDatabase();
     }
 }
+
+
