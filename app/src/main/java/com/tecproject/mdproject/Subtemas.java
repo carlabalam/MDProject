@@ -83,6 +83,7 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
                 break;
 
             case R.id.bHexaDecimal: //boton para llamar otra activida
+                intent= new Intent(this,Teoria_texto.class);
                 id_subtema = 2;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
@@ -147,16 +148,10 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
 
         } else if (id == R.id.nav_estadisticas) {
 
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-
-
-
 }

@@ -16,20 +16,14 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-
 import android.widget.Toast;
 
-
-
 public class MainActivity extends AppCompatActivity  {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         Button b1=(Button) findViewById(R.id.btlogin);
 
@@ -38,9 +32,9 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void onClick(View v) {
-
                 String usuario= ((AutoCompleteTextView) findViewById(R.id.email)).getText().toString();
                 String password= ((EditText) findViewById(R.id.password)).getText().toString();
+
 
                 if (usuario.equals("admin")&& password.equals("admin")){
 
@@ -51,17 +45,7 @@ public class MainActivity extends AppCompatActivity  {
                     Toast.makeText(getApplication(), "Usuario Incorecto", Toast.LENGTH_SHORT).show();
                 }
 
-
             }
         });
-
-
-
     }
-
-
-
-
-
-
 }
