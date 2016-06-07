@@ -1,10 +1,9 @@
 package com.tecproject.mdproject;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -25,7 +24,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
 
         b1 =(Button)findViewById(R.id.bttema1);
         b2=(Button) findViewById(R.id.bttema2);
@@ -38,10 +37,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
             @Override
             public void onClick(View v) {
-
                 Intent intent= new Intent(Home.this, Subtemas.class);
                 startActivity(intent);
-
             }
         });
 
@@ -49,10 +46,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
             @Override
             public void onClick(View v) {
-
-                Intent intent= new Intent(Home.this, Subtemas_Conjuntos.class);
+                Intent intent= new Intent(Home.this, Subtemas_conjuntos.class);
                 startActivity(intent);
-
             }
         });
 
@@ -60,10 +55,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
             @Override
             public void onClick(View v) {
-
-                Intent intent= new Intent(Home.this, Subtemas_Logica.class);
+                Intent intent= new Intent(Home.this, Subtemas_logica.class);
                 startActivity(intent);
-
             }
         });
 
@@ -76,7 +69,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        //drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
