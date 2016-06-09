@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class Subtemas_conjuntos extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -17,9 +20,8 @@ public class Subtemas_conjuntos extends AppCompatActivity implements NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subtemas_conjuntos);
-
-
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
+        //pertence al ejercicio de enviar datos entre actividades
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -83,7 +85,6 @@ public class Subtemas_conjuntos extends AppCompatActivity implements NavigationV
             startActivity(intent);
 
         } else if (id == R.id.nav_estadisticas) {
-
 
         }
 
