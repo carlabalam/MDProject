@@ -29,12 +29,23 @@
             android:name=".Subtemas"
             android:label="Subtemas"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Teoria_texto" />
         <activity android:name=".Teoria_imagen" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Subtemas_conjuntos"></activity>
+        <activity
+            android:name=".Subtemas_conjuntos"
+            android:label="Conjuntos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Subtemas_Logica"
+            android:label="Logica"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Teoria_sistemas"
+            android:label="@string/title_activity_teoria_sistemas"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
+
 </manifest>

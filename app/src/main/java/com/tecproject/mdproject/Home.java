@@ -45,12 +45,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        b2.setOnClickListener(new View.OnClickListener(){
+       b2.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
 
-                Intent intent= new Intent(Home.this, Subtemas_Conjuntos.class);
+                Intent intent= new Intent(Home.this, Subtemas_conjuntos.class);
                 startActivity(intent);
 
             }

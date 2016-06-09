@@ -2,63 +2,30 @@ package com.tecproject.mdproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
-public class Subtemas extends AppCompatActivity implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener{
-    Button btnSistDecimal, btnHexaDecimal, btnBinario;
-    int  id_subtema;
-    int cont;
-
-    Integer recibido;
-
-    Intent intent;
-
+public class Subtemas_Logica extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_subtemas__logica);
 
-        //pertence al ejercicio de enviar datos entre actividades
-        Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
-        Bundle bundle = intentar.getExtras();
 
-        setContentView(R.layout.activity_subtemas);
-
-        btnSistDecimal = (Button)findViewById(R.id.bSistNums);
-        btnHexaDecimal = (Button)findViewById(R.id.bHexaDecimal);
-        btnBinario = (Button)findViewById(R.id.bBinario);
-
-        btnSistDecimal.setOnClickListener(this);
-        btnHexaDecimal.setOnClickListener(this);
-        btnBinario.setOnClickListener(this);
-        //Creación del botón de atrás (icono)
-        //android.support.v7.app.ActionBar actionBar= getSupportActionBar();
-        //actionBar.setDisplayHomeAsUpEnabled(true);
-
-        if (bundle != null) {
-            //recibido = bundle.getBoolean("loquesea");
-            recibido = bundle.getInt("id_subtema");
-            switch (recibido){
-                case 1: btnHexaDecimal.setEnabled(true);
-                    break;
-                case 2: btnBinario.setEnabled(true);
-                    btnHexaDecimal.setEnabled(true);
-                    break;
-            }
-        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -69,34 +36,7 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-
-            case R.id.bSistNums: //boton para llamar otra actividad
-                intent = new Intent(this,Teoria_sistemas.class);
-                id_subtema = 1;
-                intent.putExtra("id_subtema", id_subtema);
-                startActivity(intent);
-                break;
-
-            case R.id.bHexaDecimal: //boton para llamar otra activida
-                intent= new Intent(this,Teoria_sistemas.class);
-                id_subtema = 2;
-                intent.putExtra("id_subtema", id_subtema);
-                startActivity(intent);
-                break;
-            case R.id.bBinario: //boton para llamar otra actividad
-                intent = new Intent(this,Teoria_sistemas.class);
-                id_subtema = 3;
-                intent.putExtra("id_subtema", id_subtema);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
 
     }
 
@@ -148,10 +88,12 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
 
         } else if (id == R.id.nav_estadisticas) {
 
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
