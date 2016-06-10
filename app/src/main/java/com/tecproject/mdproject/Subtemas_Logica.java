@@ -1,9 +1,10 @@
 package com.tecproject.mdproject;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,52 +13,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
-import com.tecproject.mdproject.bd.Helper;
-
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-    Button b1, b2, b3, b4;
+public class Subtemas_Logica extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
+        setContentView(R.layout.activity_subtemas__logica);
 
-        b1 =(Button)findViewById(R.id.bttema1);
-        b2=(Button) findViewById(R.id.bttema2);
-        b3=(Button) findViewById(R.id.bttema3);
-        b4=(Button) findViewById(R.id.btexamenF);
-
-        Helper mydb = new Helper(getApplicationContext());
-
-        b1.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(Home.this, Subtemas.class);
-                startActivity(intent);
-            }
-        });
-
- /*       b2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(Home.this, Subtemas_conjuntos.class);
-                startActivity(intent);
-            }
-        });
-
-        b3.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(Home.this, Subtemas_Logica.class);
-                startActivity(intent);
-            }
-        });*/
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,7 +31,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        //drawer.setDrawerListener(toggle);
+        drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -132,6 +95,5 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 }

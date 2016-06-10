@@ -1,6 +1,7 @@
 package com.tecproject.mdproject;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +27,7 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
         //pertence al ejercicio de enviar datos entre actividades
         Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
         Bundle bundle = intentar.getExtras();
@@ -52,9 +52,11 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
                 case 1: btnHexaDecimal.setEnabled(true);
                     break;
                 case 2: btnBinario.setEnabled(true);
-                    btnHexaDecimal.setEnabled(true);
+
+                btnHexaDecimal.setEnabled(true);
                     break;
             }
+
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -64,7 +66,7 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        //drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -76,20 +78,20 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
         switch (v.getId()){
 
             case R.id.bSistNums: //boton para llamar otra actividad
-                intent = new Intent(this,Teoria_texto.class);
+                intent = new Intent(this,Teoria_sistemas.class);
                 id_subtema = 1;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
                 break;
 
             case R.id.bHexaDecimal: //boton para llamar otra activida
-                intent= new Intent(this,Teoria_texto.class);
+                intent= new Intent(this,Teoria_sistemas.class);
                 id_subtema = 2;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
                 break;
             case R.id.bBinario: //boton para llamar otra actividad
-                intent = new Intent(this,Teoria_texto.class);
+                intent = new Intent(this,Teoria_sistemas.class);
                 id_subtema = 3;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
@@ -146,8 +148,9 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
             Intent intent= new Intent(this, Ejercicio.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_estadisticas) {
-
+        } else if (id == R.id.nav_estudiar) {
+            Intent intent= new Intent(this, Home.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

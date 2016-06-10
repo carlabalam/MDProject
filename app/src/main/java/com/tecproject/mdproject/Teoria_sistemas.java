@@ -1,5 +1,6 @@
 package com.tecproject.mdproject;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -7,25 +8,34 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.tecproject.mdproject.bd.OpciMultText;
-
 import java.io.ByteArrayInputStream;
 
-public class Teoria_texto extends AppCompatActivity {
+public class Teoria_sistemas extends AppCompatActivity {
+
     int id_secuencia = 0;
     int id_subtema;
     private TextView tv;
     private ImageView imagen;
     private Button next, atras, finalizar;
     private String texto = "";
+
+    //objeto de clase SQLIteDatabase
     SQLiteDatabase db = null;
+
     private Cursor cursor = null;
     private Cursor cursor2 = null;
     private Cursor cursor3 = null;
@@ -36,8 +46,9 @@ public class Teoria_texto extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teoria_texto);
-
+        setContentView(R.layout.activity_teoria_sistemas);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         //pertence al ejercicio de enviar datos entre actividades
         Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
@@ -48,6 +59,7 @@ public class Teoria_texto extends AppCompatActivity {
             set_id_subtema(id_subtema_recogido);
         }
 
+
         db = openOrCreateDatabase("BaseDatos.sqlite", MODE_PRIVATE, null);
 
         tv = (TextView) findViewById(R.id.textView);
@@ -55,6 +67,7 @@ public class Teoria_texto extends AppCompatActivity {
         atras= (Button) findViewById(R.id.bAtras);
         finalizar = (Button) findViewById(R.id.btnFin);
         imagen = (ImageView) findViewById(R.id.imageViewT);
+
 
         regresarRows();
         ejecutaSQL();
@@ -74,7 +87,7 @@ public class Teoria_texto extends AppCompatActivity {
 
                 id_secuencia++;
 
-                if (id_secuencia > 0){
+                if (id_secuencia > 0) {
                     atras.setVisibility(View.VISIBLE);
                     atras.setEnabled(true);
                 }
@@ -83,11 +96,11 @@ public class Teoria_texto extends AppCompatActivity {
                 ejecutaSQL();
                 muestraTabla();
                 tv.setText(texto);
-                if (campoIdPicture != 0){
+                if (campoIdPicture != 0) {
                     imagen.setImageBitmap(consultarImagen());
                     campoIdPicture = 0;
                 }
-                if(id_secuencia == numRows-1){
+                if (id_secuencia == numRows - 1) {
                     next.setVisibility(View.INVISIBLE);
                     finalizar.setVisibility(View.VISIBLE);
 
@@ -106,7 +119,7 @@ public class Teoria_texto extends AppCompatActivity {
                 next.setVisibility(View.VISIBLE);
                 finalizar.setVisibility(View.GONE);
 
-                if(id_secuencia==0){
+                if (id_secuencia == 0) {
                     atras.setVisibility(View.GONE);
                 }
 
@@ -114,7 +127,7 @@ public class Teoria_texto extends AppCompatActivity {
                 ejecutaSQL();
                 muestraTabla();
                 tv.setText(texto);
-                if (campoIdPicture != 0){
+                if (campoIdPicture != 0) {
                     imagen.setImageBitmap(consultarImagen());
                     campoIdPicture = 0;
                 }
@@ -125,18 +138,22 @@ public class Teoria_texto extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Teoria_texto.this);
-                alertDialogBuilder.setMessage("Has finalizado con la teoria de sistemas numericos para continuar es necesario realizar los ejercicios")
+                /*Intent intent22 = new Intent(Teoria_sistemas.this, Subtemas.class);
+                boolean loquesea = true;
+                intent22.putExtra("id_subtema", id_subtema);
+                startActivity(intent22);*/
+                AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_sistemas.this);
+                alertDialogBuider.setMessage("has finaliza con la teoria de sistemas numericos para continuar es necesario realizar los ejercicios")
                         .setCancelable(false)
-                        .setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("continuar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(Teoria_texto.this, OpciMultText.class);
+                                Intent intent = new Intent(Teoria_sistemas.this, Ejercicio.class);
                                 startActivity(intent);
-
                             }
                         });
-                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                AlertDialog alertDialog = alertDialogBuider.create();
                 alertDialog.show();
             }
         });
@@ -169,21 +186,6 @@ public class Teoria_texto extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
         return bitmap;
     }
-
-
-    public static Bitmap getImage(byte[] imagen) {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(imagen);
-        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-
-        return bitmap;
-    }
-
-   /* public Bitmap MapearImagen(){
-
-        Bitmap bitmap = BitmapFactory.decodeByteArray(this.imagenData , 0, this.imagenData .length);
-
-        return bitmap;
-    }*/
 
     private void set_id_subtema(int id_subtema) {
         this.id_subtema = id_subtema;

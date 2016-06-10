@@ -34,4 +34,6 @@
     <string name="title_activity_home">Home</string>
     <string name="respuesta1">respuesta1</string>
     <string name="respuesta2">respuesta2</string>
+    <string name="title_activity_subtemas__logica">Subtemas_Logica</string>
+    <string name="title_activity_teoria_sistemas">Teoria Sistemas</string>
 </resources>
