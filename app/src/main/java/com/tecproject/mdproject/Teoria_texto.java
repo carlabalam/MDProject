@@ -1,16 +1,20 @@
 package com.tecproject.mdproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.tecproject.mdproject.bd.OpciMultText;
 
 import java.io.ByteArrayInputStream;
 
@@ -121,11 +125,19 @@ public class Teoria_texto extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent22  = new Intent(Teoria_texto.this, Subtemas.class);
-                boolean loquesea = true;
-                intent22.putExtra("id_subtema", id_subtema);
-                startActivity(intent22);
-                startActivity(intent22);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Teoria_texto.this);
+                alertDialogBuilder.setMessage("Has finalizado con la teoria de sistemas numericos para continuar es necesario realizar los ejercicios")
+                        .setCancelable(false)
+                        .setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(Teoria_texto.this, OpciMultText.class);
+                                startActivity(intent);
+
+                            }
+                        });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
     }

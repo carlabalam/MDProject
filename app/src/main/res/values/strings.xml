@@ -32,4 +32,6 @@
     <string name="boton3">Logica Propos.</string>
     <string name="boton4">Examen</string>
     <string name="title_activity_home">Home</string>
+    <string name="respuesta1">respuesta1</string>
+    <string name="respuesta2">respuesta2</string>
 </resources>

@@ -30,7 +30,6 @@
             android:label="Subtemas"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Teoria_texto" />
-        <activity android:name=".Teoria_imagen" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
