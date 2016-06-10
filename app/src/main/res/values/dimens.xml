@@ -19,6 +19,8 @@
     <dimen name="buttonSize">164dp</dimen>
     <dimen name="buttonSizeHeigh">97dp</dimen>
     <dimen name="underHeigh">50dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 
 </resources>
