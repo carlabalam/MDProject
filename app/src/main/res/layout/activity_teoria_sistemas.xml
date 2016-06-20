@@ -80,31 +80,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:columnCount="2"
+                android:columnCount="3"
                 android:orientation="horizontal"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp">
 
-                <Button
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Atras"
+                    android:src="@drawable/bretroceder"
                     android:id="@+id/bAtras"
-                    android:layout_gravity="left|center_horizontal"/>
+                    android:layout_gravity="left|center_horizontal"
+                    android:background="#00ffffff" />
 
-                <Button
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Siguiente"
+                    android:src="@drawable/bsigue"
                     android:id="@+id/btnNext"
-                    android:layout_gravity="center_horizontal|right" />
+                    android:layout_gravity="right"
+                    android:layout_columnWeight="1"
+                    android:background="#00ffffff" />
 
-                <Button
+                <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Finalizar"
+                    android:src="@drawable/bsalir1"
                     android:id="@+id/btnFin"
-                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorBotonInf"
+                    android:layout_gravity="right|center_horizontal"
+
                     android:visibility="gone"/>
             </GridLayout>
 

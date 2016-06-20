@@ -52,8 +52,10 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
                 case 1: btnHexaDecimal.setEnabled(true);
                     break;
                 case 2: btnBinario.setEnabled(true);
-
-                btnHexaDecimal.setEnabled(true);
+                        btnHexaDecimal.setEnabled(true);
+                    break;
+                case 3:btnHexaDecimal.setEnabled(true);
+                    btnBinario.setEnabled(true);
                     break;
             }
 
