@@ -35,14 +35,6 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Subtemas_conjuntos"
-            android:label="Conjuntos"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Subtemas_Logica"
-            android:label="Logica"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Teoria_sistemas"
             android:label="@string/title_activity_teoria_sistemas"
             android:theme="@style/AppTheme.NoActionBar"></activity>

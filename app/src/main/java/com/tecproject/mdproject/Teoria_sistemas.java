@@ -3,23 +3,16 @@ package com.tecproject.mdproject;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +24,7 @@ public class Teoria_sistemas extends AppCompatActivity {
     int id_subtema;
     private TextView tv;
     private ImageView imagen;
-    private Button next, atras, finalizar;
+    private ImageButton next, atras, finalizar;
     private String texto = "";
     SQLiteDatabase db = null;
     private Cursor cursor = null;
@@ -47,6 +40,7 @@ public class Teoria_sistemas extends AppCompatActivity {
         setContentView(R.layout.activity_teoria_sistemas);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
 
         //pertence al ejercicio de enviar datos entre actividades
         Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
@@ -61,9 +55,9 @@ public class Teoria_sistemas extends AppCompatActivity {
         db = openOrCreateDatabase("BaseDatos.sqlite", MODE_PRIVATE, null);
 
         tv = (TextView) findViewById(R.id.textView);
-        next = (Button) findViewById(R.id.btnNext);
-        atras= (Button) findViewById(R.id.bAtras);
-        finalizar = (Button) findViewById(R.id.btnFin);
+        next = (ImageButton) findViewById(R.id.btnNext);
+        atras= (ImageButton) findViewById(R.id.bAtras);
+        finalizar = (ImageButton) findViewById(R.id.btnFin);
         imagen = (ImageView) findViewById(R.id.imageViewT);
 
 
@@ -189,21 +183,6 @@ public class Teoria_sistemas extends AppCompatActivity {
         return bitmap;
     }
 
-
-    public static Bitmap getImage(byte[] imagen) {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(imagen);
-        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-
-        return bitmap;
-    }
-
-   /* public Bitmap MapearImagen(){
-
-        Bitmap bitmap = BitmapFactory.decodeByteArray(this.imagenData , 0, this.imagenData .length);
-
-        return bitmap;
-    }*/
-
     private void set_id_subtema(int id_subtema) {
         this.id_subtema = id_subtema;
     }
@@ -212,9 +191,4 @@ public class Teoria_sistemas extends AppCompatActivity {
         cursor2 = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == " + id_subtema, null);
         numRows = cursor2.getCount();
     }
-
-
-
-
-
 }
