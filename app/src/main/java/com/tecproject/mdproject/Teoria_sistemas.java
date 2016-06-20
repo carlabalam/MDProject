@@ -189,21 +189,6 @@ public class Teoria_sistemas extends AppCompatActivity {
         return bitmap;
     }
 
-
-    public static Bitmap getImage(byte[] imagen) {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(imagen);
-        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-
-        return bitmap;
-    }
-
-   /* public Bitmap MapearImagen(){
-
-        Bitmap bitmap = BitmapFactory.decodeByteArray(this.imagenData , 0, this.imagenData .length);
-
-        return bitmap;
-    }*/
-
     private void set_id_subtema(int id_subtema) {
         this.id_subtema = id_subtema;
     }
