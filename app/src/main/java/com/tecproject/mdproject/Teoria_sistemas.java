@@ -8,20 +8,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.io.ByteArrayInputStream;
 
 public class Teoria_sistemas extends AppCompatActivity {
@@ -39,6 +32,7 @@ public class Teoria_sistemas extends AppCompatActivity {
     private Cursor cursor = null;
     private Cursor cursor2 = null;
     private Cursor cursor3 = null;
+    private Cursor cursorSiEjercicio = null;
     private int numRows;
     private byte[] imagenData;
     private int campoIdPicture;
@@ -105,8 +99,6 @@ public class Teoria_sistemas extends AppCompatActivity {
                     finalizar.setVisibility(View.VISIBLE);
 
                 }
-
-
             }
         });
 
@@ -138,30 +130,23 @@ public class Teoria_sistemas extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                /*Intent intent22 = new Intent(Teoria_sistemas.this, Subtemas.class);
-                boolean loquesea = true;
-                intent22.putExtra("id_subtema", id_subtema);
-                startActivity(intent22);*/
-                AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_sistemas.this);
-                alertDialogBuider.setMessage("has finaliza con la teoria de sistemas numericos para continuar es necesario realizar los ejercicios")
-                        .setCancelable(false)
-                        .setPositiveButton("continuar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(Teoria_sistemas.this, Ejercicio.class);
-                                startActivity(intent);
-                            }
-                        });
+                String mensaje1 = "Has llegado al final del tema";
+                String mensaje2 = "Hasta llegado al final del tema, resuelve los ejercicios propuestos para continuar";
 
-                AlertDialog alertDialog = alertDialogBuider.create();
-                alertDialog.show();
+                siEjercicios();
+
+                if (cursorSiEjercicio.getCount() == 0) {
+                    lanzarMensaje(mensaje1);
+                } else {
+                    lanzarMensaje(mensaje2);
+                }
+
             }
         });
     }
 
     private void ejecutaSQL() {
         cursor = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == " + id_subtema + " AND Secuencia == " + id_secuencia, null);
-        /*cursor = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == " + id_subtema + "  AND Secuencia ==" + id_secuencia, null);*/
     }
 
     private void muestraTabla() {
@@ -195,4 +180,36 @@ public class Teoria_sistemas extends AppCompatActivity {
         cursor2 = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == " + id_subtema, null);
         numRows = cursor2.getCount();
     }
+
+
+    private void lanzarMensaje(String mensaje){
+        AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_sistemas.this);
+        alertDialogBuider.setMessage(mensaje)
+                .setCancelable(false)
+                .setPositiveButton("continuar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if (cursorSiEjercicio.getCount() == 0) {
+                            Intent intent = new Intent(Teoria_sistemas.this, Subtemas.class);
+                            intent.putExtra("id_subtema", id_subtema);
+                            startActivity(intent);
+
+                        } else {
+                            Intent intent = new Intent(Teoria_sistemas.this, Ejercicio.class);
+                            startActivity(intent);
+                        }
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuider.create();
+        alertDialog.show();
+    }
+
+    private void siEjercicios(){
+
+        cursorSiEjercicio = db.rawQuery("SELECT BancoRespuestasEjercicios.BancoEjercicios_id,BancoInstruccionesEjercicios.Instrucccion,BancoRespuestasEjercicios.TextosRespuesta,BancoRespuestasEjercicios.EsRespuesta , BancoRespuestasEjercicios.Ponderacion FROM BancoInstruccionesEjercicios LEFT JOIN BancoEjercicios ON BancoEjercicios.BancoIntruccionesEjercicios_id = BancoInstruccionesEjercicios._id LEFT JOIN BancoRespuestasEjercicios ON BancoRespuestasEjercicios.BancoEjercicios_id = BancoEjercicios._id WHERE BancoInstruccionesEjercicios.SubTemas_id = "+ id_subtema, null);
+    }
+
 }

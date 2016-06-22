@@ -10,11 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity  {
+import com.tecproject.mdproject.bd.Helper;
+import com.tecproject.mdproject.model.User;
 
+public class MainActivity extends AppCompatActivity  {
+    User objetoUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Helper mydb = new Helper(getApplicationContext());
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
         Button b1=(Button) findViewById(R.id.btlogin);
@@ -28,13 +32,15 @@ public class MainActivity extends AppCompatActivity  {
                 String password= ((EditText) findViewById(R.id.password)).getText().toString();
 
 
+
                 if (usuario.equals("admin")&& password.equals("admin")){
+               // if (objetoUser.obtenerDatosUsuario(usuario, password)){
 
                     Intent intent = new Intent(MainActivity.this, Home.class);
                     startActivity(intent);
 
                 } else{
-                    Toast.makeText(getApplication(), "Usuario Incorecto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), "Usuario o Contraseña Incorecto", Toast.LENGTH_SHORT).show();
                 }
 
             }

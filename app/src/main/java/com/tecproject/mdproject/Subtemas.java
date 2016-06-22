@@ -17,7 +17,6 @@ import android.widget.Button;
 public class Subtemas extends AppCompatActivity implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener{
     Button btnSistDecimal, btnHexaDecimal, btnBinario;
     int  id_subtema;
-    int cont;
 
     Integer recibido;
 
@@ -27,12 +26,10 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
-        //pertence al ejercicio de enviar datos entre actividades
-        Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
-        Bundle bundle = intentar.getExtras();
-
+        //Bloquea la orientación en vertical, LANDSCAPE es horizontal
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_subtemas);
+
 
         btnSistDecimal = (Button)findViewById(R.id.bSistNums);
         btnHexaDecimal = (Button)findViewById(R.id.bHexaDecimal);
@@ -45,15 +42,30 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
         //android.support.v7.app.ActionBar actionBar= getSupportActionBar();
         //actionBar.setDisplayHomeAsUpEnabled(true);
 
+
+
+        /************************************
+         * *********************************
+         * **********************************
+         * LO DESHABILITE PORQUE NO ME DEJA AVANZAR
+        * Recoge lo enviado desde Teoria_sistemas.java
+        * que permite ir activando los subtemas
+        */
+        intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+
         if (bundle != null) {
-            //recibido = bundle.getBoolean("loquesea");
             recibido = bundle.getInt("id_subtema");
+       //     Toast.makeText(Subtemas.this, "veamos que se mando: " + recibido, Toast.LENGTH_SHORT).show();
             switch (recibido){
                 case 1: btnHexaDecimal.setEnabled(true);
                     break;
                 case 2: btnBinario.setEnabled(true);
-
-                btnHexaDecimal.setEnabled(true);
+                    btnHexaDecimal.setEnabled(true);
+                    break;
+                case 3:btnHexaDecimal.setEnabled(true);
+                    btnBinario.setEnabled(true);
                     break;
             }
 

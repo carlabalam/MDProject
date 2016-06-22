@@ -14,11 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.tecproject.mdproject.bd.Helper;
-
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    Button b1, b2, b3, b4;
+    Button b1SistemasNumericos, b2, b3, b4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +24,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         setContentView(R.layout.activity_home);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
 
-        b1 =(Button)findViewById(R.id.bttema1);
+        b1SistemasNumericos =(Button)findViewById(R.id.bttema1);
         b2=(Button) findViewById(R.id.bttema2);
         b3=(Button) findViewById(R.id.bttema3);
         b4=(Button) findViewById(R.id.btexamenF);
 
-        Helper mydb = new Helper(getApplicationContext());
 
-        b1.setOnClickListener(new View.OnClickListener(){
+
+        b1SistemasNumericos.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -41,23 +39,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(intent);
             }
         });
-
- /*       b2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(Home.this, Subtemas_conjuntos.class);
-                startActivity(intent);
-            }
-        });
-
-        b3.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(Home.this, Subtemas_Logica.class);
-                startActivity(intent);
-            }
-        });*/
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

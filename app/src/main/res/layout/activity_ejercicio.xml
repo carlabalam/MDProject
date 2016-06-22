@@ -12,37 +12,35 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
+        android:layout_height="match_parent">
 
         <TextView
             android:layout_width="@dimen/cuadro_imagen"
             android:layout_height="@dimen/text_size_estandar_small"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Instrucciones"
+            android:text=""
             android:id="@+id/Instrucciones"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.33"
             android:textAlignment="center"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
         <ImageView
-            android:layout_width="@dimen/cuadro_imagen"
-            android:layout_height="@dimen/cuadro_imagen"
-            android:id="@+id/imageView"
-            android:background="#dad6d6"
-            android:layout_above="@+id/editText"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:id="@+id/imageExercise"
+            android:layout_above="@+id/Instrucciones"
             android:layout_gravity="center_horizontal"
             android:layout_alignLeft="@+id/Instrucciones"
-            android:layout_alignStart="@+id/Instrucciones" />
+            android:layout_alignStart="@+id/Instrucciones"
+            android:paddingTop="16dp"
+            android:scaleType="centerCrop"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/txtAnswer"
             android:gravity="center"
             android:singleLine="false"
             android:selectAllOnFocus="false"
@@ -56,7 +54,7 @@
             android:layout_height="wrap_content"
             android:text="Aceptar"
             android:textColor="#ffffff"
-            android:id="@+id/button"
+            android:id="@+id/Aceptar"
             android:gravity="center"
             android:clickable="true"
             android:background="@drawable/bottom"
