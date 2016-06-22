@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -32,7 +31,7 @@
             <Button
                 android:layout_width="@dimen/buttonSize"
                 android:layout_height="@dimen/buttonSizeHeigh"
-                android:text="@string/b1"
+                android:text="@string/b10"
                 android:id="@+id/bSistNums"
                 android:layout_gravity="center_horizontal|top"
                 android:layout_marginTop="10dp"
@@ -47,7 +46,7 @@
                 android:layout_gravity="center_horizontal|bottom"
                 android:background="@color/colorBotonInf"
                 android:textColor="#ffffff"
-                android:text="@string/teo" />
+                android:text="Teoria" />
         </FrameLayout>
 
         <FrameLayout
@@ -60,7 +59,7 @@
             <Button
                 android:layout_width="@dimen/buttonSize"
                 android:layout_height="@dimen/buttonSizeHeigh"
-                android:text="@string/b2"
+                android:text="@string/b11"
                 android:id="@+id/bHexaDecimal"
                 android:layout_gravity="center_horizontal|top"
                 android:layout_marginTop="10dp"
@@ -89,7 +88,7 @@
             <Button
                 android:layout_width="@dimen/buttonSize"
                 android:layout_height="@dimen/buttonSizeHeigh"
-                android:text="@string/b3"
+                android:text="@string/b12"
                 android:id="@+id/bBinario"
                 android:layout_gravity="center_horizontal|top"
                 android:layout_marginTop="10dp"
@@ -99,7 +98,7 @@
             <Button
                 android:layout_width="@dimen/buttonSize"
                 android:layout_height="@dimen/underHeigh"
-                android:text="6 ejercicios"
+                android:text="@string/teo"
                 android:id="@+id/bConjuntos"
                 android:layout_gravity="center_horizontal|bottom"
                 android:background="@color/colorBotonInf"
@@ -107,7 +106,7 @@
                 android:enabled="true" />
         </FrameLayout>
 
-</GridLayout>
+    </GridLayout>
 
 
     <android.support.design.widget.NavigationView
@@ -121,3 +120,4 @@
 
 
 </android.support.v4.widget.DrawerLayout>
+

@@ -15,7 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class Subtemas extends AppCompatActivity implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener{
+public class Subtema_Logica extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
+
     Button btnSistDecimal, btnHexaDecimal, btnBinario;
     int  id_subtema;
     int cont;
@@ -33,7 +34,7 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
         Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
         Bundle bundle = intentar.getExtras();
 
-        setContentView(R.layout.activity_subtemas);
+        setContentView(R.layout.activity_subtema_logica);
 
         btnSistDecimal = (Button)findViewById(R.id.bSistNums);
         btnHexaDecimal = (Button)findViewById(R.id.bHexaDecimal);
@@ -50,14 +51,14 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
             //recibido = bundle.getBoolean("loquesea");
             recibido = bundle.getInt("id_subtema");
             switch (recibido){
-                case 1: btnHexaDecimal.setEnabled(true);
+                case 13: btnHexaDecimal.setEnabled(true);
                     break;
-                case 2: btnBinario.setEnabled(true);
+                case 14:
                         btnHexaDecimal.setEnabled(true);
                     break;
-                case 3:btnHexaDecimal.setEnabled(true);
-                    btnBinario.setEnabled(true);
-                    break;
+                //case 15:btnHexaDecimal.setEnabled(true);
+                //btnBinario.setEnabled(true);
+                  //  break;
             }
 
         }
@@ -81,21 +82,21 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
         switch (v.getId()){
 
             case R.id.bSistNums: //boton para llamar otra actividad
-                intent = new Intent(this,Teoria_sistemas.class);
-                id_subtema = 1;
+                intent = new Intent(this,Teoria_logica.class);
+                id_subtema = 13;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
                 break;
 
             case R.id.bHexaDecimal: //boton para llamar otra activida
-                intent= new Intent(this,Teoria_sistemas.class);
-                id_subtema = 2;
+                intent= new Intent(this,Teoria_logica.class);
+                id_subtema = 14;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
                 break;
             case R.id.bBinario: //boton para llamar otra actividad
-                intent = new Intent(this,Teoria_sistemas.class);
-                id_subtema = 3;
+                intent = new Intent(this,Teoria_logica.class);
+                id_subtema = 15;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
                 break;
@@ -170,3 +171,4 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
         return super.onKeyDown(keyCode, event);
     }
 }
+

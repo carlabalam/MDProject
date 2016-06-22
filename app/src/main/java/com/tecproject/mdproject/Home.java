@@ -1,7 +1,9 @@
 package com.tecproject.mdproject;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,12 +11,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.tecproject.mdproject.bd.Helper;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -31,7 +32,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         b3=(Button) findViewById(R.id.bttema3);
         b4=(Button) findViewById(R.id.btexamenF);
 
-        Helper mydb = new Helper(getApplicationContext());
+
 
         b1.setOnClickListener(new View.OnClickListener(){
 
@@ -46,8 +47,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Home.this, Subtemas_conjuntos.class);
-                startActivity(intent);
+
             }
         });
 
@@ -55,8 +55,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Home.this, Subtemas_Logica.class);
-                startActivity(intent);
+                Intent tertema= new Intent(Home.this, Subtema_Logica.class);
+                startActivity(tertema);
             }
         });
 
@@ -133,6 +133,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == event.KEYCODE_BACK) {
+                finishAffinity();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 }

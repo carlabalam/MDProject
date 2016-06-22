@@ -18,11 +18,15 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-
+    <string name="teo">Teoria</string>
     <string name="b1">1.1 Sistemas Númericos</string>
     <string name="b2">1.2 Conversión de Decimal a Hexadecimal</string>
     <string name="b3">1.3 División Binario</string>
     <string name="b4">2 Ejercicios</string>
+
+    <string name="b10">3.1 Concepto de preposición</string>
+    <string name="b11">3.2 Preposiciones compuestas</string>
+    <string name="b12">3.3 Tablas de verdad</string>
 
     <string name="title_activity_main2">Main2Activity</string>
 
@@ -33,6 +37,8 @@
     <string name="boton4">Examen</string>
     <string name="title_activity_home">Home</string>
     <string name="title_activity_subtemas__logica">Subtemas_Logica</string>
-    <string name="title_activity_teoria_sistemas">Teoria Sistemas</string>
+    <string name="title_activity_teoria_sistemas">Sistemas numéricos</string>
+    <string name="title_activity_teoria_logica">Lógica proposicional</string>
+
 
 </resources>

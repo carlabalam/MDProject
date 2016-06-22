@@ -37,6 +37,14 @@
         <activity
             android:name=".Teoria_sistemas"
             android:label="@string/title_activity_teoria_sistemas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Subtema_Logica"
+            android:label="@string/title_activity_subtemas__logica"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Teoria_logica"
+            android:label="@string/title_activity_teoria_logica"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,10 +18,10 @@ import android.widget.TextView;
 
 import java.io.ByteArrayInputStream;
 
-public class Teoria_sistemas extends AppCompatActivity {
+public class Teoria_logica extends AppCompatActivity {
 
     int id_secuencia = 0;
-    int id_subtema;
+    int id_subtema=13;
     private TextView tv;
     private ImageView imagen;
     private ImageButton next, atras, finalizar;
@@ -32,20 +33,16 @@ public class Teoria_sistemas extends AppCompatActivity {
     private int numRows;
     private byte[] imagenData;
     private int campoIdPicture;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teoria_sistemas);
+        setContentView(R.layout.activity_teoria_logica);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
-
         //pertence al ejercicio de enviar datos entre actividades
         Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
-        Bundle bundle = intentar.getExtras();
-
-        if (bundle != null) {
+        Bundle bundle = intentar.getExtras();if (bundle != null) {
             int id_subtema_recogido = bundle.getInt("id_subtema");
             set_id_subtema(id_subtema_recogido);
         }
@@ -129,25 +126,25 @@ public class Teoria_sistemas extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent22 = new Intent(Teoria_sistemas.this, Subtemas.class);
+                Intent intent22 = new Intent(Teoria_logica.this, Subtema_Logica.class);
                 boolean loquesea = true;
                 intent22.putExtra("id_subtema", id_subtema);
                 startActivity(intent22);
-                /*AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_sistemas.this);
+                /*AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_logica.this);
                 alertDialogBuider.setMessage("has finaliza con la teoria de sistemas numericos para continuar es necesario realizar los ejercicios")
                         .setCancelable(false)
                         .setPositiveButton("continuar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Intent intent = new Intent(Teoria_sistemas.this, Ejercicio.class);
+                                Intent intent = new Intent(Teoria_logica.this, Ejercicio.class);
                                 startActivity(intent);
 
                             }
                         });
                 AlertDialog alertDialog = alertDialogBuider.create();
-                alertDialog.show();*/
-
+                alertDialog.show();
+*/
             }
         });
 
@@ -179,7 +176,22 @@ public class Teoria_sistemas extends AppCompatActivity {
         //Toast.makeText(Teoria_texto.this, "largo es de " + largo, Toast.LENGTH_SHORT).show();
         ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenData);
         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-        return bitmap;
+        int width= bitmap.getWidth();
+        int height=bitmap.getHeight();
+        int w=0;
+        int h=0;
+        int newWidth= w;
+        int newHeigth= h;
+        //Calculo del escalado de la imagen
+        float escalaW=((float) newWidth) / width;
+        float escalaH=((float) newHeigth) / height;
+
+        //matriz para manipular la imagen
+        Matrix matrix= new Matrix();
+        matrix.postScale(escalaW,escalaH);
+        // creación de la imagen con los nuevos valores
+        Bitmap resizeBitmap= Bitmap.createBitmap(bitmap, 1,10,width,height,matrix,true);
+        return resizeBitmap;
     }
 
     private void set_id_subtema(int id_subtema) {
@@ -194,7 +206,7 @@ public class Teoria_sistemas extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
         if (keyCode == event.KEYCODE_BACK) {
-            Intent subtema = new Intent(this, Subtemas.class);
+            Intent subtema = new Intent(this,Subtema_Logica.class);
             startActivity(subtema);
         }
         return super.onKeyDown(keyCode, event);
