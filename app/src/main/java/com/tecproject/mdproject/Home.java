@@ -51,14 +51,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        b3.setOnClickListener(new View.OnClickListener(){
+        /*b3.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Home.this, Subtemas_Logica.class);
+                Intent intent= new Intent(Home.this, Subtemas_logica.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

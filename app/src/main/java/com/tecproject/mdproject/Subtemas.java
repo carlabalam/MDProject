@@ -46,7 +46,7 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
         //actionBar.setDisplayHomeAsUpEnabled(true);
 
         if (bundle != null) {
-            //recibido = bundle.getBoolean("loquesea");
+
             recibido = bundle.getInt("id_subtema");
             switch (recibido){
                 case 1: btnHexaDecimal.setEnabled(true);

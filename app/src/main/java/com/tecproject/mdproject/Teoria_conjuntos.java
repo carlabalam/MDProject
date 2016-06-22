@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,7 +20,7 @@ import android.widget.TextView;
 
 import java.io.ByteArrayInputStream;
 
-public class Teoria_sistemas extends AppCompatActivity {
+public class Teoria_conjuntos extends AppCompatActivity {
 
     int id_secuencia = 0;
     int id_subtema;
@@ -37,9 +39,10 @@ public class Teoria_sistemas extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teoria_sistemas);
+        setContentView(R.layout.activity_teoria_conjuntos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
 
         //pertence al ejercicio de enviar datos entre actividades
@@ -70,12 +73,18 @@ public class Teoria_sistemas extends AppCompatActivity {
             campoIdPicture = 0;
         }
         atras.setVisibility(View.GONE);
+        if (id_secuencia == numRows - 1) {
+            next.setVisibility(View.INVISIBLE);
+            finalizar.setVisibility(View.VISIBLE);
+
+        }
 
 
         next.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
 
                 id_secuencia++;
 
@@ -131,24 +140,23 @@ public class Teoria_sistemas extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                /*Intent intent22 = new Intent(Teoria_sistemas.this, Subtemas.class);
-                boolean loquesea = true;
+                Intent intent22 = new Intent(Teoria_conjuntos.this, Subtemas_conjuntos.class);
                 intent22.putExtra("id_subtema", id_subtema);
-                startActivity(intent22);*/
-                AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_sistemas.this);
+                startActivity(intent22);
+                /*AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_conjuntos.this);
                 alertDialogBuider.setMessage("has finaliza con la teoria de sistemas numericos para continuar es necesario realizar los ejercicios")
                         .setCancelable(false)
                         .setPositiveButton("continuar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Intent intent = new Intent(Teoria_sistemas.this, Ejercicio.class);
+                                Intent intent = new Intent(Teoria_conjuntos.this, Ejercicio.class);
                                 startActivity(intent);
 
                             }
                         });
                 AlertDialog alertDialog = alertDialogBuider.create();
-                alertDialog.show();
+                alertDialog.show();*/
 
             }
         });
