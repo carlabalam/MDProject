@@ -34,17 +34,26 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Subtemas_conjuntos"
-            android:label="Conjuntos"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Subtemas_Logica"
-            android:label="Logica"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Teoria_sistemas"
             android:label="@string/title_activity_teoria_sistemas"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+
+            android:name=".Subtema_Logica"
+            android:label="@string/title_activity_subtemas_logica"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Teoria_logica"
+            android:label="@string/title_activity_teoria_logica"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".Subtemas_conjuntos"
+            android:label="@string/title_activity_subtemas_conjuntos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Teoria_conjuntos"
+            android:label="@string/title_activity_teoria_conjuntos"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

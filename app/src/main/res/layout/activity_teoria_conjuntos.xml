@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.tecproject.mdproject.Teoria_sistemas">
+    tools:context="com.tecproject.mdproject.Teoria_conjuntos">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay2">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
@@ -22,22 +22,12 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:fitsSystemWindows="true"
-                android:background="@drawable/fondo"
-                android:id="@+id/perfil"/>
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -48,8 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.tecproject.mdproject.Teoria_sistemas"
-        tools:showIn="@layout/activity_teoria_sistemas">
+        tools:context="com.tecproject.mdproject.Teoria_conjuntos"
+        tools:showIn="@layout/activity_teoria_conjuntos">
 
         <LinearLayout
             android:orientation="vertical"
@@ -64,6 +54,7 @@
                 android:id="@+id/textView"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
+
                 android:layout_marginRight="10dp" />
 
             <ImageView
@@ -71,6 +62,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imageViewT"
                 android:scaleType="center"
+
                 />
 
             <GridLayout
@@ -102,16 +94,18 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/bejercicio"
+                    android:src="@drawable/bsalir1"
                     android:id="@+id/btnFin"
-                    android:background="#00ffffff"
+                    android:background="@color/colorBotonInf"
                     android:layout_gravity="right|center_horizontal"
 
                     android:visibility="gone"/>
             </GridLayout>
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
 
+
+
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

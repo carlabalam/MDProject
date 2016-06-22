@@ -1,9 +1,7 @@
 package com.tecproject.mdproject;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,54 +15,53 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Subtema_Logica extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
 
-    Button b1SistemasNumericos, b2Conjuntos , b3Logica, b4Examen;
+    Button btnSistDecimal, btnHexaDecimal;
+    int  id_subtema;
+    int cont;
+
+    Integer recibido;
+
+    Intent intent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
+        //pertence al ejercicio de enviar datos entre actividades
+        Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
+        Bundle bundle = intentar.getExtras();
 
-        b1SistemasNumericos =(Button)findViewById(R.id.bttema1);
-        b2Conjuntos = (Button) findViewById(R.id.bttema2);
-        b3Logica = (Button) findViewById(R.id.bttema3);
-        b4Examen = (Button) findViewById(R.id.btexamenF);
+        setContentView(R.layout.activity_subtema_logica);
 
-        b1SistemasNumericos.setOnClickListener(new View.OnClickListener(){
+        btnSistDecimal = (Button)findViewById(R.id.bSistNums);
+        btnHexaDecimal = (Button)findViewById(R.id.bHexaDecimal);
 
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Home.this, Subtemas.class);
-                startActivity(intent);
+
+        btnSistDecimal.setOnClickListener(this);
+        btnHexaDecimal.setOnClickListener(this);
+
+        //Creación del botón de atrás (icono)
+        //android.support.v7.app.ActionBar actionBar= getSupportActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
+
+        if (bundle != null) {
+            //recibido = bundle.getBoolean("loquesea");
+            recibido = bundle.getInt("id_subtema");
+            switch (recibido){
+                case 13: btnHexaDecimal.setEnabled(true);
+                    break;
+                case 14:
+                        btnHexaDecimal.setEnabled(true);
+                    break;
             }
-        });
 
-
-
-
-       b2Conjuntos .setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent tertema= new Intent(Home.this, Subtemas_conjuntos.class);
-                startActivity(tertema);
-            }
-        });
-
-       b3Logica.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent tertema= new Intent(Home.this, Subtema_Logica.class);
-                startActivity(tertema);
-            }
-        });
-
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -75,7 +72,34 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+
+            case R.id.bSistNums: //boton para llamar otra actividad
+                intent = new Intent(this,Teoria_logica.class);
+                id_subtema = 13;
+                intent.putExtra("id_subtema", id_subtema);
+                startActivity(intent);
+                break;
+
+            case R.id.bHexaDecimal: //boton para llamar otra activida
+                intent= new Intent(this,Teoria_logica.class);
+                id_subtema = 14;
+                intent.putExtra("id_subtema", id_subtema);
+                startActivity(intent);
+                break;
+            case R.id.bBinario: //boton para llamar otra actividad
+                intent = new Intent(this,Teoria_logica.class);
+                id_subtema = 15;
+                intent.putExtra("id_subtema", id_subtema);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
 
     }
 
@@ -125,23 +149,23 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             Intent intent= new Intent(this, Ejercicio.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_estadisticas) {
-
-
+        } else if (id == R.id.nav_estudiar) {
+            Intent intent= new Intent(this, Home.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
         if (keyCode == event.KEYCODE_BACK) {
-                finishAffinity();
+            Intent tema = new Intent(this, Home.class);
+            startActivity(tema);
         }
         return super.onKeyDown(keyCode, event);
     }
-
 }
+

@@ -47,7 +47,7 @@
                 android:layout_gravity="center_horizontal|bottom"
                 android:background="@color/colorBotonInf"
                 android:textColor="#ffffff"
-                android:text="Teoria" />
+                android:text="@string/teo" />
         </FrameLayout>
 
         <FrameLayout
@@ -71,7 +71,7 @@
             <Button
                 android:layout_width="@dimen/buttonSize"
                 android:layout_height="@dimen/underHeigh"
-                android:text="@string/b4"
+                android:text="@string/teo"
                 android:id="@+id/bHexaDecimal2"
                 android:layout_gravity="center_horizontal|bottom"
                 android:background="@color/colorBotonInf"
@@ -99,7 +99,7 @@
             <Button
                 android:layout_width="@dimen/buttonSize"
                 android:layout_height="@dimen/underHeigh"
-                android:text="@string/b4"
+                android:text="6 ejercicios"
                 android:id="@+id/bConjuntos"
                 android:layout_gravity="center_horizontal|bottom"
                 android:background="@color/colorBotonInf"
@@ -107,7 +107,7 @@
                 android:enabled="true" />
         </FrameLayout>
 
-    </GridLayout>
+</GridLayout>
 
 
     <android.support.design.widget.NavigationView

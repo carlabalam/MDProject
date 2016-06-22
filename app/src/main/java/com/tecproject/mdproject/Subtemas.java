@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -62,7 +63,7 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
                 case 1: btnHexaDecimal.setEnabled(true);
                     break;
                 case 2: btnBinario.setEnabled(true);
-                    btnHexaDecimal.setEnabled(true);
+                        btnHexaDecimal.setEnabled(true);
                     break;
                 case 3:btnHexaDecimal.setEnabled(true);
                     btnBinario.setEnabled(true);
@@ -168,5 +169,14 @@ public class Subtemas extends AppCompatActivity implements View.OnClickListener,
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == event.KEYCODE_BACK) {
+            Intent tema = new Intent(this, Home.class);
+            startActivity(tema);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

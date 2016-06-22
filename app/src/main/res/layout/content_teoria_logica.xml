@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.tecproject.mdproject.Teoria_logica"
+    tools:showIn="@layout/activity_teoria_logica">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:id="@+id/textView"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewT"
+            android:scaleType="center"
+
+            />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:columnCount="3"
+            android:orientation="horizontal"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bretroceder"
+                android:id="@+id/bAtras"
+                android:layout_gravity="left|center_horizontal"
+                android:background="#00ffffff" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bsigue"
+                android:id="@+id/btnNext"
+                android:layout_gravity="right"
+                android:layout_columnWeight="1"
+                android:background="#00ffffff" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bejercicio"
+                android:id="@+id/btnFin"
+                android:background="#00ffffff"
+                android:layout_gravity="right|center_horizontal"
+
+                android:visibility="gone"/>
+        </GridLayout>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
