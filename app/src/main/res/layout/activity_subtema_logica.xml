@@ -78,34 +78,6 @@
                 android:enabled="true" />
         </FrameLayout>
 
-        <FrameLayout
-            android:layout_width="175dp"
-            android:layout_height="160dp"
-            android:layout_row="1"
-            android:layout_column="0"
-            android:id="@+id/frame3">
-
-            <Button
-                android:layout_width="@dimen/buttonSize"
-                android:layout_height="@dimen/buttonSizeHeigh"
-                android:text="@string/b12"
-                android:id="@+id/bBinario"
-                android:layout_gravity="center_horizontal|top"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorBotonSup"
-                android:enabled="false" />
-
-            <Button
-                android:layout_width="@dimen/buttonSize"
-                android:layout_height="@dimen/underHeigh"
-                android:text="@string/teo"
-                android:id="@+id/bConjuntos"
-                android:layout_gravity="center_horizontal|bottom"
-                android:background="@color/colorBotonInf"
-                android:textColor="#ffffff"
-                android:enabled="true" />
-        </FrameLayout>
-
     </GridLayout>
 
 

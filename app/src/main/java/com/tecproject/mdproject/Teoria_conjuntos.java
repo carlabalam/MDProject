@@ -9,7 +9,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -17,10 +16,10 @@ import android.widget.TextView;
 
 import java.io.ByteArrayInputStream;
 
-public class Teoria_logica extends AppCompatActivity {
+public class Teoria_conjuntos extends AppCompatActivity {
 
     int id_secuencia = 0;
-    int id_subtema=13;
+    int id_subtema;
     private TextView tv;
     private ImageView imagen;
     private ImageButton next, atras, finalizar;
@@ -32,16 +31,21 @@ public class Teoria_logica extends AppCompatActivity {
     private int numRows;
     private byte[] imagenData;
     private int campoIdPicture;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teoria_logica);
+        setContentView(R.layout.activity_teoria_conjuntos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
+
         //pertence al ejercicio de enviar datos entre actividades
         Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
-        Bundle bundle = intentar.getExtras();if (bundle != null) {
+        Bundle bundle = intentar.getExtras();
+
+        if (bundle != null) {
             int id_subtema_recogido = bundle.getInt("id_subtema");
             set_id_subtema(id_subtema_recogido);
         }
@@ -65,12 +69,18 @@ public class Teoria_logica extends AppCompatActivity {
             campoIdPicture = 0;
         }
         atras.setVisibility(View.GONE);
+        if (id_secuencia == numRows - 1) {
+            next.setVisibility(View.INVISIBLE);
+            finalizar.setVisibility(View.VISIBLE);
+
+        }
 
 
         next.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
 
                 id_secuencia++;
 
@@ -92,6 +102,7 @@ public class Teoria_logica extends AppCompatActivity {
                     finalizar.setVisibility(View.VISIBLE);
 
                 }
+
 
 
             }
@@ -125,25 +136,24 @@ public class Teoria_logica extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent22 = new Intent(Teoria_logica.this, Subtema_Logica.class);
-                boolean loquesea = true;
+                Intent intent22 = new Intent(Teoria_conjuntos.this, Subtemas_conjuntos.class);
                 intent22.putExtra("id_subtema", id_subtema);
                 startActivity(intent22);
-                /*AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_logica.this);
+                /*AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_conjuntos.this);
                 alertDialogBuider.setMessage("has finaliza con la teoria de sistemas numericos para continuar es necesario realizar los ejercicios")
                         .setCancelable(false)
                         .setPositiveButton("continuar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Intent intent = new Intent(Teoria_logica.this, Ejercicio.class);
+                                Intent intent = new Intent(Teoria_conjuntos.this, Ejercicio.class);
                                 startActivity(intent);
 
                             }
                         });
                 AlertDialog alertDialog = alertDialogBuider.create();
-                alertDialog.show();
-*/
+                alertDialog.show();*/
+
             }
         });
 
@@ -185,14 +195,5 @@ public class Teoria_logica extends AppCompatActivity {
     private void regresarRows(){
         cursor2 = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == " + id_subtema, null);
         numRows = cursor2.getCount();
-    }
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // TODO Auto-generated method stub
-        if (keyCode == event.KEYCODE_BACK) {
-            Intent subtema = new Intent(this,Subtema_Logica.class);
-            startActivity(subtema);
-        }
-        return super.onKeyDown(keyCode, event);
     }
 }

@@ -17,7 +17,7 @@ import android.widget.Button;
 
 public class Subtema_Logica extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
 
-    Button btnSistDecimal, btnHexaDecimal, btnBinario;
+    Button btnSistDecimal, btnHexaDecimal;
     int  id_subtema;
     int cont;
 
@@ -38,11 +38,11 @@ public class Subtema_Logica extends AppCompatActivity implements View.OnClickLis
 
         btnSistDecimal = (Button)findViewById(R.id.bSistNums);
         btnHexaDecimal = (Button)findViewById(R.id.bHexaDecimal);
-        btnBinario = (Button)findViewById(R.id.bBinario);
+
 
         btnSistDecimal.setOnClickListener(this);
         btnHexaDecimal.setOnClickListener(this);
-        btnBinario.setOnClickListener(this);
+
         //Creación del botón de atrás (icono)
         //android.support.v7.app.ActionBar actionBar= getSupportActionBar();
         //actionBar.setDisplayHomeAsUpEnabled(true);
@@ -56,9 +56,6 @@ public class Subtema_Logica extends AppCompatActivity implements View.OnClickLis
                 case 14:
                         btnHexaDecimal.setEnabled(true);
                     break;
-                //case 15:btnHexaDecimal.setEnabled(true);
-                //btnBinario.setEnabled(true);
-                  //  break;
             }
 
         }
