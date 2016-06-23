@@ -1,5 +1,6 @@
 package com.tecproject.mdproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
@@ -8,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -26,10 +28,14 @@ public class Teoria_conjuntos extends AppCompatActivity {
     private ImageView imagen;
     private ImageButton next, atras, finalizar;
     private String texto = "";
+
+    //objeto de clase SQLIteDatabase
     SQLiteDatabase db = null;
+
     private Cursor cursor = null;
     private Cursor cursor2 = null;
     private Cursor cursor3 = null;
+    private Cursor cursorSiEjercicio = null;
     private int numRows;
     private byte[] imagenData;
     private int campoIdPicture;
@@ -41,7 +47,8 @@ public class Teoria_conjuntos extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
+        //Bloquea la orientación en vertical, LANDSCAPE es horizontal
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if (Build.VERSION.SDK_INT >= 21){
             getWindow().setStatusBarColor(getResources().getColor(R.color.gris));
@@ -56,7 +63,6 @@ public class Teoria_conjuntos extends AppCompatActivity {
             set_id_subtema(id_subtema_recogido);
         }
 
-
         db = openOrCreateDatabase("BaseDatos.sqlite", MODE_PRIVATE, null);
 
         tv = (TextView) findViewById(R.id.textView);
@@ -64,7 +70,6 @@ public class Teoria_conjuntos extends AppCompatActivity {
         atras= (ImageButton) findViewById(R.id.bAtras);
         finalizar = (ImageButton) findViewById(R.id.btnFin);
         imagen = (ImageView) findViewById(R.id.imageViewT);
-
 
         regresarRows();
         ejecutaSQL();
@@ -78,9 +83,7 @@ public class Teoria_conjuntos extends AppCompatActivity {
         if (id_secuencia == numRows - 1) {
             next.setVisibility(View.INVISIBLE);
             finalizar.setVisibility(View.VISIBLE);
-
         }
-
 
         next.setOnClickListener(new View.OnClickListener() {
 
@@ -106,11 +109,7 @@ public class Teoria_conjuntos extends AppCompatActivity {
                 if (id_secuencia == numRows - 1) {
                     next.setVisibility(View.INVISIBLE);
                     finalizar.setVisibility(View.VISIBLE);
-
                 }
-
-
-
             }
         });
 
@@ -142,23 +141,17 @@ public class Teoria_conjuntos extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent22 = new Intent(Teoria_conjuntos.this, Subtemas_conjuntos.class);
-                intent22.putExtra("id_subtema", id_subtema);
-                startActivity(intent22);
-                /*AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_conjuntos.this);
-                alertDialogBuider.setMessage("has finaliza con la teoria de sistemas numericos para continuar es necesario realizar los ejercicios")
-                        .setCancelable(false)
-                        .setPositiveButton("continuar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
 
-                                Intent intent = new Intent(Teoria_conjuntos.this, Ejercicio.class);
-                                startActivity(intent);
+                String mensaje1 = "Has llegado al final del tema";
+                String mensaje2 = "Hasta llegado al final del tema, resuelve los ejercicios propuestos para continuar";
 
-                            }
-                        });
-                AlertDialog alertDialog = alertDialogBuider.create();
-                alertDialog.show();*/
+                siEjercicios();
+
+                if (cursorSiEjercicio.getCount() == 0) {
+                    lanzarMensaje(mensaje1);
+                } else {
+                    lanzarMensaje(mensaje2);
+                }
 
             }
         });
@@ -168,7 +161,6 @@ public class Teoria_conjuntos extends AppCompatActivity {
 
     private void ejecutaSQL() {
         cursor = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == " + id_subtema + " AND Secuencia == " + id_secuencia, null);
-        /*cursor = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == " + id_subtema + "  AND Secuencia ==" + id_secuencia, null);*/
     }
 
     private void muestraTabla() {
@@ -183,12 +175,9 @@ public class Teoria_conjuntos extends AppCompatActivity {
     }
 
     private Bitmap consultarImagen() {
-        //Toast.makeText(Teoria_texto.this, "entrando en consultar imagene y el valor de campoIdPic es :" + campoIdPicture, Toast.LENGTH_SHORT).show();
         cursor3 = db.rawQuery("SELECT * FROM BancoImagenes WHERE _id == " + campoIdPicture, null);
         cursor3.moveToFirst();
         imagenData = cursor3.getBlob(2);
-        int largo = imagenData.length;
-        //Toast.makeText(Teoria_texto.this, "largo es de " + largo, Toast.LENGTH_SHORT).show();
         ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenData);
         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
         return bitmap;
@@ -202,10 +191,42 @@ public class Teoria_conjuntos extends AppCompatActivity {
         cursor2 = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == " + id_subtema, null);
         numRows = cursor2.getCount();
     }
+
+    private void lanzarMensaje(String mensaje){
+        AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_conjuntos.this);
+        alertDialogBuider.setMessage(mensaje)
+                .setCancelable(false)
+                .setPositiveButton("continuar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if (cursorSiEjercicio.getCount() == 0) {
+                            Intent intent = new Intent(Teoria_conjuntos.this, Subtemas_conjuntos.class);
+                            intent.putExtra("id_subtema", id_subtema);
+                            startActivity(intent);
+
+                        } else {
+                            Intent intent = new Intent(Teoria_conjuntos.this, OpciMultText.class);
+                            intent.putExtra("id_subtema", id_subtema);
+                            startActivity(intent);
+                        }
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuider.create();
+        alertDialog.show();
+    }
+
+    private void siEjercicios(){
+        cursorSiEjercicio = db.rawQuery("SELECT BancoRespuestasEjercicios.BancoEjercicios_id,BancoInstruccionesEjercicios.Instrucccion,BancoRespuestasEjercicios.TextosRespuesta,BancoRespuestasEjercicios.EsRespuesta , BancoRespuestasEjercicios.Ponderacion FROM BancoInstruccionesEjercicios LEFT JOIN BancoEjercicios ON BancoEjercicios.BancoIntruccionesEjercicios_id = BancoInstruccionesEjercicios._id LEFT JOIN BancoRespuestasEjercicios ON BancoRespuestasEjercicios.BancoEjercicios_id = BancoEjercicios._id WHERE BancoInstruccionesEjercicios.SubTemas_id = "+ id_subtema, null);
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
         if (keyCode == event.KEYCODE_BACK) {
-            Intent subtema = new Intent(this,Subtemas_conjuntos.class);
+            Intent subtema = new Intent(this, Subtemas_conjuntos.class);
             startActivity(subtema);
         }
         return super.onKeyDown(keyCode, event);

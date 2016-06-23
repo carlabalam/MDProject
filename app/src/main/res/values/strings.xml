@@ -33,11 +33,10 @@
     <string name="boton3">Logica Propos.</string>
     <string name="boton4">Examen</string>
     <string name="title_activity_home">Home</string>
-    <string name="respuesta1">respuesta1</string>
-    <string name="respuesta2">respuesta2</string>
     <string name="title_activity_teoria_sistemas">Sistemas numéricos</string>
     <string name="title_activity_teoria_logica">Lógica proposicional</string>
     <string name="title_activity_subtemas_conjuntos">Subtemas Conjuntos</string>
     <string name="title_activity_subtemas_logica">Subtemas Logica</string>
     <string name="title_activity_teoria_conjuntos">Teoria_conjuntos</string>
+    <string name="title_activity_opcion">Opcion multiple</string>
 </resources>

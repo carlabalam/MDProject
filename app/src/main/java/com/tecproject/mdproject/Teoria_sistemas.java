@@ -46,7 +46,9 @@ public class Teoria_sistemas extends AppCompatActivity {
         setContentView(R.layout.activity_teoria_sistemas);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
+
+        //Bloquea la orientación en vertical, LANDSCAPE es horizontal
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if (Build.VERSION.SDK_INT >= 21){
             getWindow().setStatusBarColor(getResources().getColor(R.color.azul));
@@ -60,7 +62,6 @@ public class Teoria_sistemas extends AppCompatActivity {
             set_id_subtema(id_subtema_recogido);
         }
 
-
         db = openOrCreateDatabase("BaseDatos.sqlite", MODE_PRIVATE, null);
 
         tv = (TextView) findViewById(R.id.textView);
@@ -68,7 +69,6 @@ public class Teoria_sistemas extends AppCompatActivity {
         atras= (ImageButton) findViewById(R.id.bAtras);
         finalizar = (ImageButton) findViewById(R.id.btnFin);
         imagen = (ImageView) findViewById(R.id.imageViewT);
-
 
         regresarRows();
         ejecutaSQL();
@@ -79,7 +79,6 @@ public class Teoria_sistemas extends AppCompatActivity {
             campoIdPicture = 0;
         }
         atras.setVisibility(View.GONE);
-
 
         next.setOnClickListener(new View.OnClickListener() {
 
@@ -104,7 +103,6 @@ public class Teoria_sistemas extends AppCompatActivity {
                 if (id_secuencia == numRows - 1) {
                     next.setVisibility(View.INVISIBLE);
                     finalizar.setVisibility(View.VISIBLE);
-
                 }
             }
         });
@@ -169,12 +167,9 @@ public class Teoria_sistemas extends AppCompatActivity {
     }
 
     private Bitmap consultarImagen() {
-        //Toast.makeText(Teoria_texto.this, "entrando en consultar imagene y el valor de campoIdPic es :" + campoIdPicture, Toast.LENGTH_SHORT).show();
         cursor3 = db.rawQuery("SELECT * FROM BancoImagenes WHERE _id == " + campoIdPicture, null);
         cursor3.moveToFirst();
         imagenData = cursor3.getBlob(2);
-        int largo = imagenData.length;
-        //Toast.makeText(Teoria_texto.this, "largo es de " + largo, Toast.LENGTH_SHORT).show();
         ByteArrayInputStream inputStream = new ByteArrayInputStream(imagenData);
         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
         return bitmap;
@@ -204,6 +199,7 @@ public class Teoria_sistemas extends AppCompatActivity {
 
                         } else {
                             Intent intent = new Intent(Teoria_sistemas.this, Ejercicio.class);
+                            intent.putExtra("id_subtema", id_subtema);
                             startActivity(intent);
                         }
 
@@ -217,7 +213,6 @@ public class Teoria_sistemas extends AppCompatActivity {
     private void siEjercicios(){
         cursorSiEjercicio = db.rawQuery("SELECT BancoRespuestasEjercicios.BancoEjercicios_id,BancoInstruccionesEjercicios.Instrucccion,BancoRespuestasEjercicios.TextosRespuesta,BancoRespuestasEjercicios.EsRespuesta , BancoRespuestasEjercicios.Ponderacion FROM BancoInstruccionesEjercicios LEFT JOIN BancoEjercicios ON BancoEjercicios.BancoIntruccionesEjercicios_id = BancoInstruccionesEjercicios._id LEFT JOIN BancoRespuestasEjercicios ON BancoRespuestasEjercicios.BancoEjercicios_id = BancoEjercicios._id WHERE BancoInstruccionesEjercicios.SubTemas_id = "+ id_subtema, null);
     }
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

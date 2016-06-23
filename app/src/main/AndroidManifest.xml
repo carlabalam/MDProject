@@ -54,6 +54,11 @@
             android:name=".Teoria_conjuntos"
             android:label="@string/title_activity_teoria_conjuntos"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".OpciMultText"
+            android:label="@string/title_activity_opcion"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>
