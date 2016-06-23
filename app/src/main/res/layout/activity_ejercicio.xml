@@ -15,9 +15,10 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="@dimen/cuadro_imagen"
-            android:layout_height="@dimen/text_size_estandar_small"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+
             android:text=""
             android:id="@+id/Instrucciones"
             android:layout_gravity="center_horizontal"
@@ -34,7 +35,7 @@
             android:layout_alignLeft="@+id/Instrucciones"
             android:layout_alignStart="@+id/Instrucciones"
             android:paddingTop="16dp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="fitCenter"/>
 
         <EditText
             android:layout_width="wrap_content"

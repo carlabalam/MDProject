@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay4">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
@@ -21,6 +21,15 @@
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                android:background="@drawable/fondoconj"
+                app:layout_collapseMode="parallax"
+                android:id="@+id/perfil"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -61,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageViewT"
-                android:scaleType="center"
+                android:scaleType="fitCenter"
 
                 />
 
@@ -69,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:columnCount="3"
+                android:columnCount="2"
                 android:orientation="horizontal"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp">
@@ -80,7 +89,9 @@
                     android:src="@drawable/bretroceder"
                     android:id="@+id/bAtras"
                     android:layout_gravity="left|center_horizontal"
-                    android:background="#00ffffff" />
+                    android:background="#00ffffff"
+                    android:layout_row="0"
+                    android:layout_column="0" />
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -88,18 +99,21 @@
                     android:src="@drawable/bsigue"
                     android:id="@+id/btnNext"
                     android:layout_gravity="right"
-                    android:layout_columnWeight="1"
-                    android:background="#00ffffff" />
+
+                    android:background="#00ffffff"
+                    android:layout_row="0"
+                    android:layout_column="1" />
 
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/bsalir1"
+                    android:src="@drawable/bejercicio"
                     android:id="@+id/btnFin"
-                    android:background="@color/colorBotonInf"
+                    android:background="#00ffffff"
                     android:layout_gravity="right|center_horizontal"
-
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    android:layout_row="1"
+                    android:layout_column="1" />
             </GridLayout>
 
         </LinearLayout>
