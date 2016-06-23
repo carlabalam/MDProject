@@ -1,4 +1,4 @@
-package com.tecproject.mdproject.bd;
+package com.tecproject.mdproject;
 
 
 import android.database.sqlite.SQLiteDatabase;
