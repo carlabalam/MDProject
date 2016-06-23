@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -46,7 +47,9 @@ public class Teoria_logica extends AppCompatActivity {
             set_id_subtema(id_subtema_recogido);
         }
 
-
+        if (Build.VERSION.SDK_INT >= 21){
+            getWindow().setStatusBarColor(getResources().getColor(R.color.cafe));
+        }
         db = openOrCreateDatabase("BaseDatos.sqlite", MODE_PRIVATE, null);
 
         tv = (TextView) findViewById(R.id.textView);
@@ -129,21 +132,6 @@ public class Teoria_logica extends AppCompatActivity {
                 boolean loquesea = true;
                 intent22.putExtra("id_subtema", id_subtema);
                 startActivity(intent22);
-                /*AlertDialog.Builder alertDialogBuider = new AlertDialog.Builder(Teoria_logica.this);
-                alertDialogBuider.setMessage("has finaliza con la teoria de sistemas numericos para continuar es necesario realizar los ejercicios")
-                        .setCancelable(false)
-                        .setPositiveButton("continuar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                Intent intent = new Intent(Teoria_logica.this, Ejercicio.class);
-                                startActivity(intent);
-
-                            }
-                        });
-                AlertDialog alertDialog = alertDialogBuider.create();
-                alertDialog.show();
-*/
             }
         });
 

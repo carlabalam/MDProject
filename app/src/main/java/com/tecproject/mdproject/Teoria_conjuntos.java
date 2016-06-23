@@ -6,9 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -40,6 +42,10 @@ public class Teoria_conjuntos extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
+
+        if (Build.VERSION.SDK_INT >= 21){
+            getWindow().setStatusBarColor(getResources().getColor(R.color.gris));
+        }
 
         //pertence al ejercicio de enviar datos entre actividades
         Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
@@ -195,5 +201,13 @@ public class Teoria_conjuntos extends AppCompatActivity {
     private void regresarRows(){
         cursor2 = db.rawQuery("SELECT * FROM BancoTextos WHERE SubTemas_id == " + id_subtema, null);
         numRows = cursor2.getCount();
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == event.KEYCODE_BACK) {
+            Intent subtema = new Intent(this,Subtemas_conjuntos.class);
+            startActivity(subtema);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

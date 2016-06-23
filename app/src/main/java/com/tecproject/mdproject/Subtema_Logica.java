@@ -43,6 +43,7 @@ public class Subtema_Logica extends AppCompatActivity implements View.OnClickLis
         btnSistDecimal.setOnClickListener(this);
         btnHexaDecimal.setOnClickListener(this);
 
+
         //Creación del botón de atrás (icono)
         //android.support.v7.app.ActionBar actionBar= getSupportActionBar();
         //actionBar.setDisplayHomeAsUpEnabled(true);
@@ -88,12 +89,6 @@ public class Subtema_Logica extends AppCompatActivity implements View.OnClickLis
             case R.id.bHexaDecimal: //boton para llamar otra activida
                 intent= new Intent(this,Teoria_logica.class);
                 id_subtema = 14;
-                intent.putExtra("id_subtema", id_subtema);
-                startActivity(intent);
-                break;
-            case R.id.bBinario: //boton para llamar otra actividad
-                intent = new Intent(this,Teoria_logica.class);
-                id_subtema = 15;
                 intent.putExtra("id_subtema", id_subtema);
                 startActivity(intent);
                 break;

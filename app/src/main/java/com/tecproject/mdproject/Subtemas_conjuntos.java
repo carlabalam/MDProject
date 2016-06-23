@@ -2,11 +2,11 @@ package com.tecproject.mdproject;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -23,6 +23,10 @@ public class Subtemas_conjuntos extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subtemas_conjuntos);
+
+        if (Build.VERSION.SDK_INT >= 21){
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+        }
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); //Bloquea la orientación en vertical, LANDSCAPE es horizontal
         //pertence al ejercicio de enviar datos entre actividades
@@ -185,5 +189,13 @@ public class Subtemas_conjuntos extends AppCompatActivity implements View.OnClic
                 break;
         }
 
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == event.KEYCODE_BACK) {
+            Intent tema = new Intent(this, Home.class);
+            startActivity(tema);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
