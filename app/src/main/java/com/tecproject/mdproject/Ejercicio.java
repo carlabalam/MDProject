@@ -21,21 +21,20 @@ import java.io.ByteArrayInputStream;
 public class Ejercicio extends AppCompatActivity {
     private TextView instruction;
     private ImageView imageExercise;
-    private Button aceptar, finalizar;
+    private Button aceptar;
     private String textInstruction = "";
     private TextView textRespuesta;
-    private int id_subtema = 3;
+    private int id_subtema;
 
     //objeto de clase SQLIteDatabase
     SQLiteDatabase db = null;
 
-    public Cursor cursorEjercicio;
+    private Cursor cursorEjercicio;
     private Cursor cursor2 = null;
 
 
     //para guardar los bits de la imagen
     private byte[] imagenData;
-    private int id = 1;
     private String respuestaDesdeBd;
     private String respuestaXUsario;
     private int respuestasCorrectas = 0;
@@ -51,15 +50,24 @@ public class Ejercicio extends AppCompatActivity {
         //Bloquea la orientación en vertical, LANDSCAPE es horizontal
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        //pertence al ejercicio de enviar datos entre actividades
+        Intent intentar = getIntent(); //esto cacha lo que le estamos pasando en el activity 1
+        Bundle bundle = intentar.getExtras();
+
+        if (bundle != null) {
+            int id_subtema_recogido = bundle.getInt("id_subtema");
+            set_id_subtema(id_subtema_recogido);
+        }
+
         instruction = (TextView) findViewById(R.id.Instrucciones);
-        textRespuesta = (TextView) findViewById(R.id.txtAnswer);
         imageExercise = (ImageView) findViewById(R.id.imageExercise);
+        textRespuesta = (TextView) findViewById(R.id.txtAnswer);
         aceptar = (Button) findViewById(R.id.Aceptar);
 
         //abrimos la conexion con la bd
         db = openOrCreateDatabase("BaseDatos.sqlite", MODE_PRIVATE, null);
 
-        //consulta todos los ejercicios
+        //consulta los ejercicios
         ejecutaSQL();
         muestraTabla();
         instruction.setText(textInstruction);
@@ -76,11 +84,12 @@ public class Ejercicio extends AppCompatActivity {
                 } else {
                     lanzarMensajeEjercicio();
                 }
-
-
-
             }
         });
+    }
+
+    private void set_id_subtema(int id_subtema) {
+        this.id_subtema = id_subtema;
     }
 
     public void ejecutaSQL() {
