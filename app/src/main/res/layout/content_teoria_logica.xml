@@ -69,7 +69,7 @@
                 android:src="@drawable/bejercicio"
                 android:id="@+id/btnFin"
                 android:background="#00ffffff"
-                android:layout_gravity="right|center_horizontal"
+                android:layout_gravity="right"
 
                 android:visibility="gone"
                 android:layout_row="1"
